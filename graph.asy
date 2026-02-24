@@ -20,7 +20,7 @@ real S = 5;
 pen glasspen   = rgb(0.70,0.80,0.90) + opacity(0.10);
 pen edgepen    = rgb(0.80,0.85,0.90) + opacity(0.18) + linewidth(0.8);
 
-pen axisGreen = rgb(0.25,1.00,0.25) + linewidth(1.6);
+pen axisGreen = rgb(0.25,1.00,0.25) + linewidth(4.8);
 pen axisYellow = rgb(1.00,0.75,0.25) + linewidth(1.6);
 pen axisCyan   = rgb(0.00,0.90,0.90) + linewidth(1.6);
 
@@ -270,7 +270,7 @@ for(int k=0; k<rMarks.length; ++k){
   real f = Flow(r);
   triple P = (L,C,r);
   dot(P, rgb(1,1,1) + opacity(0.25) + linewidth(3));
-  lab("F="+format("%0.1f", f), P, (0.35,0.20,0.05), noteRed);
+  //lab("F="+format("%0.1f", f), P, (0.35,0.20,0.05), noteRed);
 }
 
 
@@ -304,7 +304,7 @@ for(int k=0; k<rMarks.length; ++k){
 //}
 
 // ---------- FORMULAS + LEGEND ----------
-lab("F = A / R", (0.9,1.35,0.0), (0,0,0), noteRed);
+lab("F = A / R", (1.6,1.8,0.0), (0,0,0), noteRed);
 lab("H = F^2 * R = A^2 / R", (0.9,1.8,2.0), (0,0,0), rgb(1.00,0.25,0.05));
 
 //lab("Encoding:", (0.9,2.4,0.0), (0,0,0), noteCyan);
@@ -315,7 +315,7 @@ lab("H = F^2 * R = A^2 / R", (0.9,1.8,2.0), (0,0,0), rgb(1.00,0.25,0.05));
 // Mark Rmin (singularity avoidance)
 triple Prmin = (L,C,Rmin);
 dot(Prmin, rgb(0.85,0.2,0.2) + linewidth(4));
-lab("Rmin=0.8 (avoid R=0)", Prmin, (0.55,-0.15,0.10), noteRed);
+//lab("Rmin=0.8 (avoid R=0)", Prmin, (0.55,-0.15,0.10), noteRed);
 
 // Worked point: R=2
 real R_ex = 3.5;
@@ -324,10 +324,10 @@ real H_ex = Heat(R_ex);
 
 triple Pex = (L,C,R_ex);
 dot(Pex, rgb(1.00,0.55,0.12) + linewidth(5));
-lab("R=2 => F=6, H=72", Pex, (0.55,0.20,0.15), noteAmber);
+//lab("R=2 => F=6, H=72", Pex, (0.55,0.20,0.15), noteAmber);
 
 // Also mark R=1 (F=A)
 real R_one = 1.0;
 triple P1 = (L,C,R_one);
 dot(P1, rgb(0.95,0.30,0.20) + linewidth(4));
-lab("R=1 => F=A=12", P1, (0.55,-0.15,0.10), noteRed);
+lab("R=1 => F=A=12", P1, (-.45,0.8,0.10), noteRed);
