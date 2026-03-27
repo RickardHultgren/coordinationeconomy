@@ -53,82 +53,128 @@ structural assumptions, and with an explicit assessment of model limitations.
 
 \section{Introduction}
 
-
 \subsection{The Problem of Organizational Instability}
 
-Organizations routinely experience coordination failures, decision overload, and
-escalating interpersonal conflict even when their members are individually competent
-and their objectives are clearly articulated. Standard accounts of such failures
-frequently invoke motivational deficits \citep{deci1985intrinsic}, leadership
-dysfunction \citep{yukl2012leadership}, or communication breakdowns
-\citep{weick1995sensemaking}. While each of these accounts captures important
-phenomena, they do not adequately explain a class of instabilities that arise
-structurally---that is, as a consequence of how decision authority, information load,
-and interdependency are arranged, rather than as a consequence of individual
-deficiency or interpersonal failure.
+Organizations routinely experience coordination failures, decision overload,
+rework, and escalating interpersonal conflict even when their members are
+individually competent and their objectives are clearly articulated. Standard
+accounts of such failures frequently invoke motivational deficits
+\citep{deci1985intrinsic}, leadership dysfunction \citep{yukl2012leadership},
+or communication breakdowns \citep{weick1995sensemaking}. While each of these
+accounts captures important phenomena, they do not adequately explain a class
+of instabilities that arise structurally---that is, as a consequence of how
+decision authority, information load, workflow routing, and interdependency are
+arranged, rather than as a consequence of individual deficiency or
+interpersonal failure.
 
-Physical systems provide a potentially productive set of analogies for this structural
-class of problem. In fluid and electrical networks, flow is governed by driving
-potential and opposed by resistance; when flow encounters resistance, energy is
-dissipated as heat \citep{feynman1963lectures}. This paper proposes that analogous
-structural constraints may apply to the flow of decisions and actions within
-organizations. The specific algebraic forms through which we formalize this
-analogy---presented fully in Sections~\ref{sec:autonomy}--\ref{sec:heat}---are
-modeling choices rather than empirical findings; they are introduced because they
-generate tractable, falsifiable predictions, not because they are established
-by the literatures cited for motivation.
+Physical systems provide a potentially productive set of analogies for this
+structural class of problem. In fluid and electrical networks, flow is
+governed by driving potential and opposed by resistance; when flow encounters
+resistance, energy is dissipated as heat \citep{feynman1963lectures}. This
+paper proposes that analogous structural constraints may apply to the flow of
+decisions and actions within organizations. The specific algebraic forms
+through which we formalize this analogy---presented fully in
+Sections~\ref{sec:autonomy}--\ref{sec:heat}---are modeling choices rather than
+empirical findings; they are introduced because they generate tractable,
+falsifiable predictions, not because they are established by the literatures
+cited for motivation.
 
-A further complication arises in distributed and partially automated systems: even when decisions are initially well-founded, the conditions that made them valid may change before action is actually committed. This implies that organizations face not only a problem of transmitting and coordinating intent through structure, but also a problem of determining whether a specific action remains admissible at the moment it becomes irreversible. The present paper argues that both problems must be modeled explicitly.
+A further refinement is necessary. In complex organizations, the first visible
+symptoms of failure often appear in execution---for example, on the shop
+floor, in service delivery, in customer outcomes, or in compliance breaches.
+Yet execution commonly reveals the symptom rather than the point of origin.
+Likewise, data inconsistencies, reporting anomalies, or KPI conflicts may
+appear to be the first breakdown, while in fact they often reflect a prior
+distortion in how the underlying work was decomposed, routed, sequenced,
+escalated, or reconciled. The present framework therefore gives analytic
+priority to the \emph{workflow or orchestration layer}: the intermediate
+structure through which strategic and managerial intent is translated into
+tasks, handoffs, system actions, escalation paths, and coordinated execution.
+
+This distinction matters because organizations do not act directly on strategy.
+They act through orchestrated workflows. If the workflow or orchestration layer
+encodes a slightly altered version of the original decision, then downstream
+actors, systems, and data structures may all behave in ways that are locally
+consistent while globally misaligned with the organization's actual intent.
+The present paper therefore argues that many coordination failures should be
+understood not simply as failures of communication or authority, but as
+failures of \emph{intent preservation through orchestration}.
+
+A second complication arises in distributed and partially automated systems:
+even when decisions are initially well-founded and even when orchestration
+remains coherent, the conditions that made a specific action valid may change
+before the action is actually committed. This implies that organizations face
+not one but two distinct control problems. First, they must preserve coherent
+intent as decisions are translated into workflows across humans, teams,
+software systems, and AI agents. Second, they must determine whether a
+specific act remains admissible at the moment it becomes irreversible. The
+present paper argues that both problems must be modeled explicitly and that
+they occur at different structural layers.
 
 \subsection{Literature Positioning}
 
 The framework draws on five bodies of established theory to motivate its
 conceptual components. We note explicitly where the framework is aligned with
-existing evidence and where it extends beyond what those sources directly support.
+existing evidence and where it extends beyond what those sources directly
+support.
 
-Across these literatures, authority, control, and validity are often discussed without sharply distinguishing durable standing from execution-time authorization. The present framework introduces that distinction explicitly. An actor, role, or subsystem may possess recognized standing within an organizational structure, yet still require a fresh determination that a specific act remains valid when execution occurs. This distinction becomes especially important in AI-augmented and tightly coupled environments.
+Across these literatures, authority, control, and validity are often discussed
+without sharply distinguishing durable standing from execution-time
+authorization, and workflow structure is often treated as an implementation
+detail rather than as a primary site of strategic distortion. The present
+framework departs from this tendency in two ways. First, it distinguishes
+durable standing legitimacy from execution-time admissibility. Second, it
+treats workflow or orchestration architecture as the principal intermediate
+layer at which intent is either preserved or lost before downstream data and
+execution outcomes make the loss visible.
 
 \paragraph{Self-Determination Theory (SDT).}
 Deci and Ryan's self-determination theory \citep{deci2000self, ryan2000self}
 identifies autonomy, competence, and relatedness as fundamental psychological
 needs whose satisfaction reliably predicts intrinsic motivation and well-being
 across a wide range of empirical studies. This evidence base motivates our
-choice of autonomy as the primary driving variable in the model. The
-present framework departs from SDT in treating autonomy as a structural quantity
-with a specific algebraic form (the product of legitimacy and capability),
-rather than as a psychological need whose satisfaction falls on a continuous
-scale. That algebraic form is a modeling assumption, not something SDT
-or its associated empirical literature directly implies.
+choice of autonomy as the primary driving variable in the model. The present
+framework departs from SDT in treating autonomy as a structural quantity with
+a specific algebraic form (the product of legitimacy and capability), rather
+than as a psychological need whose satisfaction falls on a continuous scale.
+That algebraic form is a modeling assumption, not something SDT or its
+associated empirical literature directly implies.
 
 \paragraph{Cognitive Load Theory (CLT).}
-Sweller's cognitive load theory \citep{sweller1988cognitive, sweller1994cognitive}
-establishes that working memory is a finite resource and that performance degrades
-when total processing demand---across its intrinsic, extraneous, and germane
-components---exceeds available capacity. This finding supports the general
-principle that complexity imposes a cost on effective action, which motivates
-the resistance construct in the present model. The specific claim that
-organizational complexity resistance functions as the denominator in a
-ratio-form flow equation is our own formalization, not a conclusion of CLT.
+Sweller's cognitive load theory \citep{sweller1988cognitive,
+sweller1994cognitive} establishes that working memory is a finite resource and
+that performance degrades when total processing demand---across its intrinsic,
+extraneous, and germane components---exceeds available capacity. This finding
+supports the general principle that complexity imposes a cost on effective
+action, which motivates the resistance construct in the present model. The
+specific claim that workflow orchestration and organizational complexity
+function jointly as resistance in a ratio-form flow equation is our own
+formalization, not a conclusion of CLT.
 
 \paragraph{Systems Theory and Cybernetics.}
 General systems theory \citep{bertalanffy1968general} and cybernetics
 \citep{ashby1956introduction, wiener1948cybernetics} model organizations as
-open systems regulated by feedback, characterized by flows of energy, information,
-and material. This tradition motivates the use of flow and network concepts in
-describing organizations. The application of Kirchhoff-like conservation constraints
-to decision networks---developed in Section~\ref{sec:kirchhoff}---is our extension
-of this tradition to the domain of authority and coordination flows; it is a
-conceptual analogy, not an established result in organizational systems theory.
+open systems regulated by feedback, characterized by flows of energy,
+information, and material. This tradition motivates the use of flow and
+network concepts in describing organizations. The application of
+Kirchhoff-like conservation constraints to decision networks---developed in
+Section~\ref{sec:kirchhoff}---is our extension of this tradition to the domain
+of authority and coordination flows; it is a conceptual analogy, not an
+established result in organizational systems theory.
 
 \paragraph{Control Theory and Normal Accidents.}
-Perrow's normal accident theory \citep{perrow1984normal} and Beer's viable systems
-model \citep{beer1972brain} both establish that organizational failure is systematically
-produced by structural mismatches between complexity and regulatory capacity.
-This provides empirical and theoretical grounding for the claim that structural
-properties, rather than individual behavior alone, determine system stability.
-The specific claim that this mismatch manifests as a quadratic heat function
-is our model's prediction, which requires empirical testing against the
-failure-mode patterns that Perrow and Beer document.
+Perrow's normal accident theory \citep{perrow1984normal} and Beer's viable
+systems model \citep{beer1972brain} both establish that organizational failure
+is systematically produced by structural mismatches between complexity and
+regulatory capacity. This provides empirical and theoretical grounding for the
+claim that structural properties, rather than individual behavior alone,
+determine system stability. The present framework extends this claim by
+proposing that one important locus of early instability is the workflow or
+orchestration layer, where regulatory intent is first transformed into
+operational sequence, routing, and handoff logic. The further claim that such
+instability manifests as a quadratic heat function remains a model prediction
+that requires empirical testing against the failure-mode patterns that Perrow
+and Beer document.
 
 \paragraph{Coordination Costs and Organization Design.}
 Transaction cost economics \citep{williamson1981economics} and coordination
@@ -136,15 +182,17 @@ theory \citep{malone1994interdisciplinary} establish that organizational design
 choices have systematic effects on the costs of integrating distributed action.
 \citet{puranam2012coordination} demonstrate that coordination failure is
 predictably linked to specific structural properties of task interdependence.
-The present model builds on this tradition by treating coordination cost as a
-resistance parameter---a dynamic variable that interacts with autonomy to
-produce either stable throughput or dissipative heat. The specific functional
-form of that interaction is, again, our formalization.
+The present model builds on this tradition by treating coordination cost not
+only as a static burden but as a dynamic resistance parameter that interacts
+with autonomy to produce either stable throughput or dissipative heat. It
+further argues that in high-complexity systems this burden is mediated
+centrally by orchestration architecture: the structural layer where decisions
+are decomposed into executable paths across roles and systems.
 
 \subsection{Overview of the Framework}
 
-The model proposes the following formal relations as a coherent set of
-modeling hypotheses:
+The model proposes the following formal relations and architectural
+distinctions as a coherent set of modeling hypotheses:
 
 \begin{enumerate}
   \item Autonomy as the product of legitimacy and capability
@@ -153,11 +201,21 @@ modeling hypotheses:
   \item Action flow as autonomy divided by complexity resistance
   \item Organizational heat as the square of flow multiplied by resistance
   \item Kirchhoff-like conservation constraints on decision networks
-  \item Decision architecture as the structural determinant of resistance
+  \item Decision architecture as the structural allocation of standing authority
+  \item Orchestration architecture as the structural layer through which intent is decomposed, routed, sequenced, escalated, and either preserved or distorted
   \item Commit architecture as the determinant of whether action remains admissible at the moment of irreversible execution
 \end{enumerate}
 
-These relations form a self-consistent formal system, but not all operate at the same layer. The first seven concern the generation, routing, and dissipation of coordinated action through an organizational network. The eighth concerns a distinct problem: whether a specific action remains admissible at the point of commitment. Their value as a theoretical contribution depends not on the precision of the analogy to physics but on whether they generate predictions that can be tested against organizational data. Section~\ref{sec:predictions} develops these predictions explicitly.
+These relations do not all operate at the same layer. The first six concern
+the generation, routing, and dissipation of coordinated action through an
+organizational network. The seventh concerns who possesses recognized standing
+to decide within a domain. The eighth concerns how those decisions are
+translated into coordinated workflows across human and technical components.
+The ninth concerns a distinct but related problem: whether a specific action
+remains admissible at the point of commitment. Their value as a theoretical
+contribution depends not on the precision of the analogy to physics but on
+whether they generate predictions that can be tested against organizational
+data. Section~\ref{sec:predictions} develops these predictions explicitly.
 
 Figure~\ref{fig:model} presents the integrated model.
 
@@ -172,88 +230,213 @@ are measurable in physical units.}
 \label{fig:model}
 \end{figure}
 
-\section{Autonomy as a Product of Legitimacy and Capability}
-\label{sec:autonomy}
 
+\section{Decision, Orchestration, and Commit Architecture}
+\label{sec:architecture}
+
+Decision architecture is defined in this framework as the structural
+configuration that allocates standing authority across an organizational
+system: who may decide, within which domain, under which recognized mandate,
+and with what escalation relationships. In the present model, decision
+architecture primarily shapes legitimacy and the distribution of recognized
+decision rights. It answers the question of \emph{who is structurally entitled
+to decide in principle}.
+
+Decision architecture alone, however, does not determine whether intent
+survives translation into action. Organizations rarely act directly on
+decision rights. They act through workflows. For this reason, the present
+framework distinguishes decision architecture from \emph{orchestration
+architecture}: the structural configuration through which decisions are
+decomposed, routed, sequenced, escalated, reconciled, and translated into
+coordinated action across human actors, software systems, and AI agents.
+Orchestration architecture is the primary design lever for
+$\text{Resistance}_{\text{Complexity}}$ and the principal intermediate layer
+at which coherence is either preserved or lost.
+
+A further distinction is required. Even when decision rights are clear and
+workflow orchestration remains coherent, a specific act may still no longer be
+valid when execution occurs. For that reason, decision architecture and
+orchestration architecture must both be distinguished from \emph{commit
+architecture}: the structural mechanism through which admissibility is
+resolved at the point where action becomes materially, financially,
+technically, or institutionally irreversible.
+
+We denote execution-time admissibility for a specific act $a$ at time $t$ as
 \[
-\text{Autonomy} = \text{Legitimacy} \times \text{Capability}
+\mathcal{A}(a,t) \in \{0,1\},
 \]
+where $\mathcal{A}(a,t)=1$ indicates that the act remains valid under current
+conditions at the commit point, and $\mathcal{A}(a,t)=0$ indicates that it
+does not. This notation is intentionally minimal. The present paper does not
+yet specify the full functional form of admissibility, but introduces it to
+mark the conceptual distinction between durable standing legitimacy and
+execution-time validity.
 
-Autonomy is defined in this framework as the effective capacity of an
-agent---individual, team, or organizational unit---to initiate and complete
-actions without requiring external authorization or compensatory support.
-This definition is broader than mere formal authority (permission to act)
-and requires both a recognized mandate and the practical ability to execute.
+\subsection{Relationship to Governance, Management, and Control Systems}
+\label{sec:governance}
 
-A clarification is necessary at this stage. In the present model, Legitimacy refers to recognized standing, mandate, or accepted authority within a decision domain. It does not by itself imply that any specific act remains valid at the moment of execution. A role may possess durable standing while a particular action, prepared under that standing, becomes inadmissible because the context, constraints, or authorizing conditions have changed. The distinction between standing legitimacy and execution-time admissibility becomes central in Sections~\ref{sec:architecture}, \ref{sec:ai}, and \ref{sec:coordination}.
+The three architectural layers introduced here operate at a different level of
+abstraction from governance, management, and control systems. Governance
+specifies who has ultimate authority. Management specifies how that authority
+is exercised in planning, coordination, and supervision. Control systems
+specify how deviations from desired states are detected and corrected. The
+present framework introduces a more structural decomposition.
 
-The multiplicative form is a deliberate modeling choice. It captures the
-intuition that effective autonomous action requires both factors to be
-substantially nonzero: an agent with full capability but no recognized
-mandate cannot act without authorization; an agent with full mandate but
-negligible capability cannot act reliably. A product structure formalizes
-this as a zero-condition: if either factor is zero, Autonomy is zero
-regardless of the magnitude of the other.
+Decision architecture specifies how standing authority is distributed across
+roles and domains. Orchestration architecture specifies how those decisions
+are transformed into routable, sequenced, and enforceable action paths.
+Commit architecture specifies how the system determines whether a specific act
+may still proceed when execution becomes irreversible. Together these layers
+define not merely who governs and who acts, but how intent travels from
+recognized authority into operational reality and whether that action remains
+valid when it commits.
 
-This choice is motivated by, but not directly implied by, the existing
-literature. Self-determination theory \citep{deci2000self} identifies autonomy
-and competence as distinct basic needs and documents their joint importance
-for intrinsic motivation; it does not, however, specify a multiplicative
-relationship between them at the organizational level. Research on role
-clarity \citep{rizzo1970role} demonstrates that ambiguous authority
-reduces effective performance even when competence is high, which is
-consistent with the zero-condition property of the product form but does
-not uniquely identify it. The product structure should therefore be understood
-as a parsimonious formalization that is compatible with these findings, not
-as a conclusion that follows from them.
+This construct is conceptually related to Beer's viable systems model
+\citep{beer1972brain}, in which system-level cohesion depends on the
+regulatory structure of the metasystem. It is also related to Williamson's
+treatment of organizational form as a determinant of transaction costs
+\citep{williamson1981economics}. The present model extends these frameworks by
+separating the distribution of authority from the preservation of intent
+through orchestration and from the execution-time resolution of admissibility.
+Whether this layered decomposition adds predictive value over more traditional
+governance and coordination-cost accounts is an open empirical question.
 
-The multiplicative form also implies that marginal improvements in one factor
-yield diminishing returns when the other is low---a prediction that is
-consistent with the general logic of complementarity in production
-\citep{milgrom1990rationalizability} but that requires direct empirical
-validation in organizational settings.
+\subsection{Workflow and Orchestration as the First Instability Layer}
+\label{sec:orchestration_instability}
 
-\section{Legitimacy and Insignificance}
-\label{sec:legitimacy}
+The framework proposes that in many complex organizations the first
+operational instability appears in the workflow or orchestration layer rather
+than in execution itself. The shop floor, customer interface, service outcome,
+or compliance event typically reveals the symptom, but not the origin.
+Similarly, data discrepancies, KPI conflicts, or reporting anomalies often
+reflect already-distorted workflow logic rather than causing it. The
+orchestration layer is therefore analytically privileged: it is where
+strategic and managerial intent is first converted into routable, sequenced,
+and enforceable action logic, and where small reinterpretations can become
+systemically durable.
 
-\[
-\text{Legitimacy} = \text{Legitimacy}_{\max} - \text{Insignificance}
-\]
+This claim has a specific implication. A workflow may remain locally coherent
+at each step while globally encoding a distorted version of the original
+decision. Handoffs may be clear, approvals correctly assigned, and local
+metrics satisfied, yet the overall sequence may pursue a slightly altered
+objective because the decomposition, routing, sequencing, escalation logic, or
+reconciliation structure has already shifted the effective meaning of the
+decision. In such cases, downstream execution is not malfunctioning in the
+ordinary sense; it is functioning faithfully relative to a workflow that has
+already drifted.
 
-Legitimacy denotes the degree to which an agent's standing, mandate, or right to participate in a class of decisions is recognized and accepted by the relevant organizational system. The construct is related to but distinct from formal authority: legitimacy is conferred through relational and social processes, not solely through structural assignment. This corresponds to the social dimension of autonomy support documented in self-determination theory \citep{deci2000self} and to the ``perceived organizational support'' construct \citep{eisenberger1986perceived}, though neither source directly operationalizes legitimacy as formalized here. In this paper, legitimacy is treated as a relatively durable property of standing within a decision domain. It should therefore be distinguished from the execution-time admissibility of any particular act, which depends on whether the conditions governing that act still hold when commitment occurs.
+The framework therefore treats orchestration architecture not as a minor
+implementation detail but as the principal structural layer through which
+intent survives or degrades. This is also the layer where human and machine
+action most directly interact: workflow engines, task routing systems,
+approval paths, user interfaces, exception handling, vendor handoffs, and
+agentic AI systems all operate here. As a result, this layer is expected to
+become increasingly decisive in AI-augmented organizations.
 
-$\text{Legitimacy}_{\max}$ represents the ceiling of standing authority available to the agent given their role and organizational position. Insignificance is
-a scalar construct introduced in this model to index the degree to which
-an agent's standing is undermined by structural or relational conditions.
-It is not a standard construct in the existing literature; the name and
-operationalization are proposed here as a modeling choice.
+\subsection{Commit Architecture and the Point of Irreversible Action}
+\label{sec:commit}
 
-The following factors are proposed as antecedents of Insignificance,
-each supported by evidence that they reduce effective authority in practice:
+Commit architecture is defined here as the structural arrangement by which the
+system determines whether a specific act remains admissible at the point where
+execution becomes materially, financially, technically, or institutionally
+irreversible. Typical commit points include code deployment, release of funds,
+grant of access, publication of instructions, execution of a trade, issuance
+of an approval that triggers downstream automation, or activation of an
+AI-originated action in a live environment.
+
+This distinction matters because upstream governance artifacts---policies, role
+assignments, workflow approvals, and documentation---shape and constrain
+action but do not by themselves constitute control in the strong sense. If the
+validity of the act is not resolved where the system commits, those upstream
+elements function as preparation rather than decisive control. The model
+therefore treats commit architecture as a separate and necessary complement to
+both decision architecture and orchestration architecture.
+
+A robust commit architecture must do at least three things. First, it must
+identify the commit point clearly enough that irreversible action is not
+occurring invisibly elsewhere in the stack. Second, it must make the
+admissibility conditions for that class of action explicit enough to be
+evaluated under current conditions. Third, it must bind the result of that
+evaluation directly to execution, so that inadmissible actions are blocked
+rather than merely recorded, questioned, or retrospectively audited.
+
+This concept is especially important in distributed and AI-augmented
+environments, where the interval between preparation and execution may be
+short, the number of candidate actions large, and the contextual conditions
+governing admissibility subject to rapid change.
+
+\subsection{Structural Sources of Resistance}
+\label{sec:resistance_sources}
+
+The following structural properties are proposed to increase Complexity
+Resistance, with special emphasis on the orchestration layer as the place
+where these burdens are most often operationalized:
 
 \begin{itemize}
-  \item \textbf{Insufficient trust:} trust deficits are associated with
-    increased reliance on formal monitoring and approval hierarchies
-    \citep{mayer1995integrative}, which the model interprets as
-    upward transfer of effective decision authority.
-  \item \textbf{Mandate ambiguity:} role conflict and ambiguity empirically
-    predict reduced performance and increased stress \citep{rizzo1970role};
-    the model formalizes this as a reduction in effective Legitimacy.
-  \item \textbf{Low perceived status:} the mechanisms by which low status
-    reduces an agent's ability to act without deference are
-    well-documented in social influence research \citep{cialdini2001influence},
-    though a direct mapping to Legitimacy as defined here remains to be
-    established.
-  \item \textbf{Absent accountability:} unclear ownership of outcomes
-    is associated with diffuse responsibility and reduced initiative
-    \citep{hackman1980work}, which the model treats as a legitimacy deficit.
+  \item \textbf{Authority ambiguity:} role conflict and boundary ambiguity
+    are empirically associated with performance decrements and stress
+    \citep{rizzo1970role}; the model interprets this as a resistance increase.
+  \item \textbf{Responsibility overlap:} diffusion of accountability is
+    associated with reduced individual effort \citep{latane1979many}; the
+    model treats this as a coordination friction that frequently becomes
+    operationally embedded in workflow handoffs and exception paths.
+  \item \textbf{Information--authority separation:} when decision rights are
+    held by agents who lack the specific knowledge required to exercise them,
+    information must be transferred before action can proceed
+    \citep{jensen1992specific}; this transfer cost enters as resistance and
+    often appears concretely as orchestration burden.
+  \item \textbf{Incentive misalignment:} divergent incentive structures among
+    interacting agents generate negotiation costs at decision nodes
+    \citep{holmstrom1991multitask}, often forcing workflow branches,
+    informal workarounds, or repeated reconciliation.
+  \item \textbf{Feedback latency:} delayed feedback is a documented source of
+    oscillation and instability in decision systems \citep{sterman1989modeling};
+    the model treats it as a resistance component that increases the
+    probability of constraint violations and stale orchestration logic.
+  \item \textbf{Orchestration distortion:} decomposition logic, routing rules,
+    sequencing assumptions, escalation pathways, and handoff structures may
+    encode a slightly altered version of the original decision. The present
+    framework treats this as a primary source of coherence loss rather than as
+    a downstream symptom.
 \end{itemize}
 
-The linear subtraction form---where each unit of Insignificance directly
-offsets one unit of Legitimacy---is a simplifying assumption of the model.
-Real relationships between the antecedents above and effective authority
-are likely nonlinear and context-dependent. This limitation is noted
-in Section~\ref{sec:limitations}.
+\subsection{Principles of Low-Resistance and High-Integrity Architecture}
+\label{sec:principles}
+
+From the model's assumptions, the following design principles reduce
+Complexity Resistance and are therefore predicted to improve flow stability,
+reduce heat, and preserve intent more reliably:
+
+\begin{enumerate}
+  \item Assigning clear, non-overlapping decision authority for each
+    recognized decision class.
+  \item Distinguishing explicitly between decision rights and the workflow
+    structures through which those rights are operationalized.
+  \item Collocating authority with the specific knowledge required to
+    exercise it \citep{jensen1992specific}.
+  \item Designing orchestration logic---decomposition, routing, sequencing,
+    escalation, and reconciliation---so that the original decision can be
+    translated into action without silent reinterpretation.
+  \item Designing feedback mechanisms with sufficiently low latency to
+    support the required throughput rate and to detect workflow drift before
+    it becomes embedded in downstream data and execution.
+  \item Resolving constraint conflicts at the architectural design level, so
+    that individual decision nodes and workflows receive consistent,
+    satisfiable constraint sets.
+  \item Limiting the number of simultaneous incoming constraints at any node
+    to within its estimated processing capacity.
+  \item Making the point of irreversible commitment explicit and binding
+    admissibility checks directly to that point, so that validity is resolved
+    where execution occurs rather than assumed from earlier preparation.
+\end{enumerate}
+
+These are predictions of the model. The general principles are consistent with
+established design guidance \citep{mintzberg1979structuring,
+williamson1981economics}, but the specific prediction that violating them
+generates superlinear heat and early orchestration instability---rather than
+merely linear coordination cost---is a novel claim that requires empirical
+support.
+
 
 \section{Capability and Risk}
 \label{sec:capability}
@@ -275,7 +458,7 @@ is not a property of outcomes per se but a demand on cognitive and
 attentional resources. This framing draws on Kahneman's model of
 attentional capacity \citep{kahneman1973attention}, which establishes that
 higher-demand tasks reduce the resources available for concurrent activities,
-but extends it to the organizational level in a way that that source does not
+but extends it to the organizational level in a way that source does not
 directly imply.
 
 The following factors are proposed as determinants of the Risk demand variable:
@@ -506,102 +689,6 @@ interventions. Whether this diagnostic strategy outperforms alternatives
 in practice is an empirical question that the present framework cannot
 resolve on theoretical grounds alone.
 
-\section{Decision Architecture}
-\label{sec:architecture}
-
-Decision architecture is defined in this framework as the structural configuration that determines how decisions are generated, routed, prepared, authorized in principle, and reconciled within an organizational system. It is the primary design lever for $\text{Resistance}_{\text{Complexity}}$ and, through the Kirchhoff constraints, for whether node and loop conservation can be satisfied. Yet decision architecture alone does not fully determine control, because action may still be prepared coherently and efficiently while no longer remaining valid when execution occurs. For that reason, decision architecture must be distinguished from commit architecture: the structural mechanism through which admissibility is resolved at the moment action becomes irreversible.
-
-We may denote execution-time admissibility for a specific act $a$ at time $t$ as
-\[
-\mathcal{A}(a,t) \in \{0,1\},
-\]
-where $\mathcal{A}(a,t)=1$ indicates that the act remains valid under current conditions at the commit point, and $\mathcal{A}(a,t)=0$ indicates that it does not. This notation is intentionally minimal. The present paper does not yet specify the full functional form of admissibility, but introduces it to mark the conceptual distinction between durable standing legitimacy and execution-time validity.
-
-
-\subsection{Relationship to Governance, Management, and Control Systems}
-
-Decision architecture, as defined here, differs from governance, management,
-and control systems in its level of abstraction. Governance specifies who
-has ultimate authority; management specifies how that authority is exercised;
-control systems specify how deviations from desired states are detected and
-corrected. Decision architecture specifies the structural topology through
-which all three operate---the network of decision rights, information
-channels, and constraint relationships that determines resistance.
-
-This construct is conceptually related to Beer's viable systems model
-\citep{beer1972brain}, in which system-level cohesion depends on the
-regulatory structure of the metasystem. It is also related to Williamson's
-treatment of organizational form as a determinant of transaction costs
-\citep{williamson1981economics}. The present model extends these frameworks
-by treating the architecture as a determinant of a dynamic resistance
-variable rather than as a source of static coordination costs. Whether
-this dynamic extension adds predictive value over static coordination-cost
-accounts is an open empirical question.
-
-\subsection{Commit Architecture and the Point of Irreversible Action}
-
-Commit architecture is defined here as the structural arrangement by which the system determines whether a specific act remains admissible at the point where execution becomes materially, financially, technically, or institutionally irreversible. Typical commit points include code deployment, release of funds, grant of access, publication of instructions, execution of a trade, issuance of an approval that triggers downstream automation, or activation of an AI-originated action in a live environment.
-
-This distinction matters because upstream governance artifacts---policies, role assignments, workflow approvals, and documentation---shape and constrain action but do not by themselves constitute control in the strong sense. If the validity of the act is not resolved where the system commits, those upstream elements function as preparation rather than decisive control. The model therefore treats commit architecture as a separate and necessary complement to decision architecture.
-
-A robust commit architecture must do at least three things. First, it must identify the commit point clearly enough that irreversible action is not occurring invisibly elsewhere in the stack. Second, it must make the admissibility conditions for that class of action explicit enough to be evaluated under current conditions. Third, it must bind the result of that evaluation directly to execution, so that inadmissible actions are blocked rather than merely recorded, questioned, or retrospectively audited.
-
-This concept is especially important in distributed and AI-augmented environments, where the interval between preparation and execution may be short, the number of candidate actions large, and the contextual conditions governing admissibility subject to rapid change.
-
-
-\subsection{Structural Sources of Resistance}
-
-The following structural properties are proposed to increase Complexity
-Resistance, in each case with reference to evidence that they impose
-coordination costs:
-
-\begin{itemize}
-  \item \textbf{Authority ambiguity:} role conflict and boundary ambiguity
-    are empirically associated with performance decrements and stress
-    \citep{rizzo1970role}; the model interprets this as a resistance increase.
-  \item \textbf{Responsibility overlap:} diffusion of accountability
-    is associated with reduced individual effort \citep{latane1979many};
-    the model treats this as a coordination friction.
-  \item \textbf{Information--authority separation:} when decision rights
-    are held by agents who lack the specific knowledge required to exercise
-    them, information must be transferred before action can proceed
-    \citep{jensen1992specific}; this transfer cost enters as resistance.
-  \item \textbf{Incentive misalignment:} divergent incentive structures
-    among interacting agents generate negotiation costs at decision nodes
-    \citep{holmstrom1991multitask}.
-  \item \textbf{Feedback latency:} delayed feedback is a documented
-    source of oscillation and instability in decision systems
-    \citep{sterman1989modeling}; the model treats it as a resistance component
-    that increases the probability of constraint violations.
-\end{itemize}
-
-\subsection{Principles of Low-Resistance Architecture}
-
-From the model's assumptions, the following design principles reduce
-Complexity Resistance and are therefore predicted to improve flow stability
-and reduce heat:
-
-\begin{enumerate}
-  \item Assigning clear, non-overlapping decision authority for each
-    recognized decision class.
-  \item Collocating authority with the specific knowledge required to
-    exercise it \citep{jensen1992specific}.
-  \item Designing feedback mechanisms with sufficiently low latency
-    to support the required throughput rate.
-  \item Resolving constraint conflicts at the architectural design level,
-    so that individual decision nodes receive consistent, satisfiable
-    constraint sets.
-  \item Limiting the number of simultaneous incoming constraints at any
-    node to within its estimated processing capacity.
-  \item Making the point of irreversible commitment explicit and binding admissibility checks directly to that point, so that validity is resolved where execution occurs rather than assumed from earlier preparation.
-\end{enumerate}
-
-These are predictions of the model. The general principles are consistent
-with established design guidance \citep{mintzberg1979structuring,
-williamson1981economics}, but the specific prediction that violating them
-generates superlinear heat---rather than merely linear cost---is a novel
-claim that requires empirical support.
-
 \section{AI-Native Organizations}
 \label{sec:ai}
 
@@ -679,32 +766,64 @@ In AI-augmented settings, the distinction between standing legitimacy and admiss
 \section{The Coordination Economy}
 \label{sec:coordination}
 
-We may denote execution-time admissibility for a specific act $a$ at time $t$ as
-\[
-\mathcal{A}(a,t) \in \{0,1\},
-\]
-where $\mathcal{A}(a,t)=1$ indicates that the act remains valid under current conditions at the commit point, and $\mathcal{A}(a,t)=0$ indicates that it does not. This notation is intentionally minimal. The present paper does not yet specify the full functional form of admissibility, but introduces it to mark the conceptual distinction between durable standing legitimacy and execution-time validity.
-
 \subsection{Coordination Cost as the Binding Constraint}
 
-The term \textit{coordination economy} is used here to describe a class of productive environment in which the technical means of production are not the primary constraint on value creation, and the central bottleneck lies instead in preserving coherent and admissible action across distributed agents. This environment is characteristic of knowledge-intensive industries, platform ecosystems, regulated organizations, and multi-agent AI systems, where many actors can generate analysis, recommendations, and even execution-ready actions at low marginal cost, but where the difficulty of maintaining aligned direction and valid commitment grows with system scale, interdependence, and speed \citep{malone1994interdisciplinary, parker2016platform, puranam2012coordination}.
+The term \textit{coordination economy} is used here to describe a class of
+productive environment in which the technical means of production are not the
+primary constraint on value creation, and the central bottleneck lies instead
+in preserving coherent and admissible action across distributed agents. This
+environment is characteristic of knowledge-intensive industries, platform
+ecosystems, regulated organizations, and multi-agent AI systems, where many
+actors can generate analysis, recommendations, and even execution-ready
+actions at low marginal cost, but where the difficulty of maintaining aligned
+direction and valid commitment grows with system scale, interdependence, and
+speed \citep{malone1994interdisciplinary, parker2016platform,
+puranam2012coordination}.
 
+In this sense, coordination cost should not be understood narrowly as the cost
+of communication or synchronization. In high-complexity environments, the
+deeper problem is that action must satisfy two distinct structural conditions
+at once. First, intent must survive translation into workflow. Strategic and
+managerial decisions must be decomposed, routed, sequenced, escalated, and
+reconciled without silently altering what the organization is actually trying
+to do. Second, a specific act must remain admissible at the moment of
+execution: the authority, context, and constraint set under which the action
+becomes irreversible must still render that action valid under current
+conditions.
 
-In this sense, coordination cost should not be understood narrowly as the
-cost of communication or synchronization. In high-complexity environments,
-the deeper problem is that action must satisfy two distinct structural
-conditions at once. First, it must remain \textit{coherent} across the
-organizational system: strategic intent, decision rights, constraints, and
-workflow translations must remain sufficiently aligned that the action being
-prepared is still meaningfully connected to the action the organization
-actually intends to take. Second, it must remain \textit{admissible} at the
-moment of execution: the authority, context, and constraint set under which
-the action becomes irreversible must still render that action valid under
-current conditions.
+The central bottleneck in a coordination economy is therefore not merely
+moving information or obtaining approvals. It is preserving intent through
+orchestration while still resolving admissibility at commitment. Where this
+capability is weak, organizations can generate abundant decisions, analyses,
+and workflow activity while still failing to realize valid coordinated action.
 
-This second condition introduces an important refinement to the framework.
+\subsection{From Standing Authority to Orchestrated Action}
 
-The earlier sections model legitimacy as a structural component of autonomy: a relatively durable property of recognized standing within an organizational decision system. That concept remains necessary, but it is not sufficient. In distributed and partially automated systems, the fact that an actor or subsystem possesses standing legitimacy within a decision domain does not by itself imply that a specific act remains valid when execution occurs. The relevant authority may have expired, the context may have changed, the risk state may have shifted, or the constraints governing the action may no longer be satisfied. Accordingly, the coordination economy is not only an economy of alignment across distributed actors; it is also an economy of preserving admissibility up to the point at which action commits.
+The earlier sections model legitimacy as a structural component of autonomy: a
+relatively durable property of recognized standing within an organizational
+decision system. That concept remains necessary, but it is not sufficient.
+Possessing standing authority does not ensure that the authority will be
+translated into action faithfully. Between recognized decision rights and
+irreversible execution lies an intermediate layer: workflow or orchestration
+architecture.
+
+This layer determines how decisions are operationalized across handoffs,
+systems, teams, and increasingly AI agents. It determines how a decision is
+broken into sub-decisions, how tasks are routed, how dependencies are ordered,
+how exceptions are escalated, and how conflicting constraints are reconciled.
+In doing so, it becomes the principal site where coherence is either preserved
+or lost. The present framework therefore proposes that data problems and
+execution breakdowns are often downstream observability surfaces of
+orchestration failure rather than the primary origin of drift.
+
+The coordination economy is therefore not only an economy of alignment across
+distributed actors; it is an economy of preserving intent as decisions are
+translated into workflows. A system with clear authority but weak
+orchestration integrity may remain procedurally orderly while advancing a
+distorted version of the original objective. Conversely, a system with strong
+orchestration but weak standing legitimacy may route work efficiently while
+lacking recognized mandate or acceptance. Durable coordinated performance
+requires both.
 
 \subsection{Why Flow, Resistance, and Heat Matter at Scale}
 
@@ -720,17 +839,24 @@ greater backlog, and more frequent escalation for the same nominal level of
 action flow. The result is that architectural advantages compound with
 scale.
 
-Yet in coordination-economy environments, throughput alone is not the
+In coordination-economy environments, however, throughput alone is not the
 relevant measure of success. A system may exhibit high flow in the sense of
 rapid decision preparation, routing, and authorization, while still failing
-at the point that matters most: irreversible execution. For this reason, the
-present framework must distinguish analytically between \textit{coordination
-flow} and \textit{commitment}. Coordination flow refers to the movement of
-intent, information, authority claims, and preparatory decisions through the
-organizational network. Commitment refers to the moment at which action
-becomes materially or institutionally irreversible---for example, deployment
-of code, release of funds, grant of access, issuance of an instruction, or
-execution of an AI-originated action in a live environment.
+to preserve the original intent through the orchestration layer. In such
+cases, rework, escalation, conflict, and fatigue may arise not only from high
+volume under resistance, but from repeated attempts to force throughput
+through workflows that already encode a drifted objective. Heat therefore
+captures not only overload but also dissipation generated by compensating for
+distorted coordination logic.
+
+For this reason, the present framework distinguishes analytically between
+\textit{coordination flow} and \textit{commitment}. Coordination flow refers
+to the movement of intent, information, authority claims, and preparatory
+decisions through the organizational network. Commitment refers to the moment
+at which action becomes materially or institutionally irreversible---for
+example, deployment of code, release of funds, grant of access, issuance of
+an instruction, or execution of an AI-originated action in a live
+environment.
 
 This distinction matters because the structural conditions required for high
 flow are not identical to those required for valid commitment. A system may
@@ -742,38 +868,65 @@ but they do not control it in the strong sense unless admissibility is
 resolved where the system commits.
 
 The coordination economy therefore operates under a dual structural burden.
-Organizations must reduce resistance sufficiently to sustain coherent flow,
-but they must also ensure that irreversible action is conditioned on
-execution-time validity. The first burden is captured by the resistance and
-heat relations introduced earlier. The second burden introduces an additional
-architectural requirement: the system must not merely transport authority
-claims; it must determine whether action is still admissible when execution
-occurs.
+Organizations must reduce resistance sufficiently to sustain coherent flow
+through the orchestration layer, but they must also ensure that irreversible
+action is conditioned on execution-time validity. The first burden is
+captured by the resistance and heat relations introduced earlier. The second
+burden introduces an additional architectural requirement: the system must not
+merely transport authority claims; it must determine whether action is still
+admissible when execution occurs.
 
-\subsection{Preparation, Commitment, and Control}
+\subsection{Preparation, Orchestration, Commitment, and Control}
 
-A central implication of the present framework is that preparation should not be conflated with control. Organizations invest heavily in preparatory structures: governance committees, policy documents, approval chains, workflow steps, model documentation, and audit trails. These may shape the generation and routing of action significantly. But unless they bind the point at which irreversible action occurs, they do not control execution in the strongest sense.
+A central implication of the present framework is that preparation should not
+be conflated with control, and that orchestration should not be mistaken for a
+purely technical implementation layer. Organizations invest heavily in
+preparatory structures: governance committees, policy documents, approval
+chains, workflow steps, model documentation, and audit trails. These may shape
+the generation and routing of action significantly. But unless they preserve
+intent through orchestration and bind the point at which irreversible action
+occurs, they do not control execution in the strongest sense.
 
-This distinction matters because many organizational pathologies arise precisely when preparation is mistaken for control. A system may appear well-governed because decisions are documented, authority domains are assigned, and approvals are captured, while still allowing an inadmissible act to commit because no mechanism resolves current validity at execution time. In such cases, the organization has designed the preparation path but not the commit path.
+This distinction matters because many organizational pathologies arise
+precisely when preparation is mistaken for control. A system may appear
+well-governed because decisions are documented, authority domains are
+assigned, workflows are formalized, and approvals are captured, while still
+allowing either of two structural failures. First, the workflow may have
+already encoded a distorted version of the original decision. Second, an
+inadmissible act may still commit because no mechanism resolves current
+validity at execution time. In such cases, the organization has designed the
+preparation path and perhaps even the process map, but not the full control
+path.
 
-The coordination economy therefore depends on two related but non-identical architectures. The first is the coordination architecture that preserves coherence, reduces resistance, and supports stable flow through the network. The second is the commit architecture that determines whether the act remains admissible under current conditions at the moment the system commits. Durable advantage requires both.
+The coordination economy therefore depends on three related but non-identical
+architectures. The first is the \emph{decision architecture} that assigns
+standing authority. The second is the \emph{orchestration architecture} that
+preserves coherence, reduces resistance, and translates decisions into
+coordinated action paths. The third is the \emph{commit architecture} that
+determines whether the act remains admissible under current conditions at the
+moment the system commits. Durable advantage requires all three.
 
-\subsection{Two Distinct Failure Modes: Coherence and Admissibility}
+\subsection{Two Distinct Failure Modes: Orchestration Failure and Commit Failure}
 
-This refinement clarifies that large-scale coordination failure can arise through two analytically distinct mechanisms, which may occur independently or jointly.
+This refinement clarifies that large-scale coordination failure can arise
+through two analytically distinct mechanisms, which may occur independently or
+jointly.
 
-First, systems may fail through \textit{coherence loss}. In this case, the
-original strategic or operational intent is progressively reinterpreted as it
-moves through governance layers, vendor interfaces, workflows, software
-systems, and automation pipelines. Each local translation may appear
-reasonable, and each step may remain procedurally valid, yet the action
-ultimately committed is no longer aligned with the intent the organization
-sought to realize. The failure here is not necessarily stale authority but
-structural drift: the system preserves permissions, process conformance, or
-local optimization, while losing global directional integrity.
+First, systems may fail through \textit{orchestration failure}. In this case,
+the original strategic or operational intent is progressively reinterpreted as
+it moves through decomposition logic, routing rules, handoffs, sequencing
+structures, escalation paths, vendor interfaces, software systems, and
+automation pipelines. Each local translation may appear reasonable, and each
+step may remain procedurally valid, yet the action ultimately committed is no
+longer aligned with the intent the organization sought to realize. The failure
+here is not necessarily stale authority but structural drift: the system
+preserves permissions, process conformance, or local optimization while losing
+global directional integrity. The first practical instability often appears in
+the orchestration layer, while execution and data reveal the consequences only
+later.
 
-Second, systems may fail through \textit{admissibility loss}. In this case,
-the intended action remains coherent and the authority under which it was
+Second, systems may fail through \textit{commit failure}. In this case, the
+intended action may remain coherent and the authority under which it was
 prepared may initially have been valid, but by the moment of execution the
 conditions that justified the action no longer hold. The context has changed,
 the authorization has expired, the risk state has shifted, or a higher-order
@@ -782,35 +935,38 @@ translational: the problem is not that the action was distorted in transit,
 but that it was not revalidated where it became irreversible.
 
 These failure modes may occur independently or jointly. A system may preserve
-coherence yet execute stale authority. A system may preserve admissibility at
-execution time yet coordinate around the wrong objective. Or it may do both:
-drift structurally while also failing to validate commitment. The
-coordination economy is therefore not reducible to either throughput
-optimization or compliance checking alone. Its central problem is the joint
-preservation of coherent and admissible action under distributed conditions.
+orchestration integrity yet execute stale authority. A system may preserve
+admissibility at execution time yet coordinate around a distorted objective.
+Or it may do both: drift structurally while also failing to validate
+commitment. The coordination economy is therefore not reducible to either
+throughput optimization or compliance checking alone. Its central problem is
+the joint preservation of coherent intent through orchestration and
+admissible action at commitment under distributed conditions.
 
-A system may therefore be structurally coherent yet inadmissible at commitment, or admissible at commitment yet globally incoherent with respect to the organization’s broader intent.
+A system may therefore be structurally coherent yet inadmissible at
+commitment, or admissible at commitment yet globally incoherent with respect
+to the organization's broader intent.
 
-\subsection{Why AI Increases the Importance of Commit Architecture}
+\subsection{Why AI Increases the Importance of Orchestration and Commit Architecture}
 
 These issues become particularly acute in AI-augmented organizations.
 Artificial intelligence can increase the effective rate at which options are
 generated, evaluated, and advanced toward execution. As argued in
-Section~\ref{sec:ai}, this can increase potential flow substantially. But
-AI also compresses the interval between preparation and commitment, scales
-the number of actions under consideration, and increases the likelihood that
-execution occurs under conditions different from those prevailing when the
-action was first authorized or inferred.
+Section~\ref{sec:ai}, this can increase potential flow substantially. But AI
+also compresses the interval between preparation and commitment, scales the
+number of actions under consideration, and increases the number of translation
+points through which organizational intent must pass before action occurs.
 
 As a result, AI systems intensify both major coordination burdens. They may
-increase coherence risk by introducing additional translation layers between
-organizational intent and operational action, especially when objective
-functions, proxy metrics, or learned policies substitute for direct human
-judgment. They also increase admissibility risk by enabling action at a pace
-that exceeds the organization's capacity to determine whether authority and
-context remain valid at the point of execution. Under these conditions, a
-governance arrangement that remains external to the execution layer may shape
-behavior but cannot reliably control it.
+increase orchestration risk by introducing additional translation layers
+between organizational intent and operational action, especially when
+objective functions, proxy metrics, workflow engines, or learned policies
+substitute for direct human judgment. They also increase admissibility risk by
+enabling action at a pace that exceeds the organization's capacity to
+determine whether authority and context remain valid at the point of
+execution. Under these conditions, a governance arrangement that remains
+external to the orchestration and execution layers may shape behavior but
+cannot reliably control it.
 
 The model therefore predicts that in AI-native coordination economies,
 competitive advantage will not accrue simply to organizations that generate
@@ -819,7 +975,7 @@ accrue to organizations that build architectures capable of doing three
 things simultaneously:
 
 \begin{enumerate}
-  \item preserving the coherence of intent across distributed decision paths,
+  \item preserving the coherence of intent through workflow and orchestration,
   \item minimizing structural resistance so that flow remains stable rather
     than heat-generating, and
   \item resolving admissibility at the point of irreversible execution.
@@ -835,131 +991,36 @@ conditions of high throughput, distributed interdependence, and changing
 context.
 
 The model therefore predicts that organizations with lower structural
-resistance and stronger execution-time validity mechanisms will realize
-compounding advantages at scale. Specifically, it predicts that:
+resistance, stronger orchestration integrity, and stronger execution-time
+validity mechanisms will realize compounding advantages at scale.
+Specifically, it predicts that:
 
 \begin{itemize}
   \item organizations that expand autonomy without reducing resistance will
     generate heat rather than proportional value;
+  \item organizations that formalize decision rights without preserving
+    intent through orchestration will exhibit orderly but drifted execution;
   \item organizations that improve throughput without embedding
     execution-time admissibility checks will increase the risk of invalid
     commitments;
-  \item organizations that maintain local validity while allowing strategic
-    intent to fragment across layers will exhibit globally misaligned but
+  \item organizations that maintain local validity while allowing intent to
+    fragment through workflow layers will exhibit globally misaligned but
     procedurally correct execution;
-  \item organizations that jointly optimize coherence, resistance, and
-    commitment architecture will be able to sustain higher effective
-    throughput before encountering instability thresholds.
+  \item organizations that jointly optimize decision architecture,
+    orchestration architecture, resistance reduction, and commit
+    architecture will be able to sustain higher effective throughput before
+    encountering instability thresholds.
 \end{itemize}
 
-The coordination economy, as defined here, therefore refers not merely to an environment in which coordination costs are high. It refers to an environment in which value creation increasingly depends on an organization's ability to preserve coherent intent across distributed preparation while also resolving admissibility at the point of irreversible execution. In such environments, resistance management, network conservation, coherence preservation, and commit-time admissibility become coequal determinants of organizational viability.
+The coordination economy, as defined here, therefore refers not merely to an
+environment in which coordination costs are high. It refers to an environment
+in which value creation increasingly depends on an organization's ability to
+preserve coherent intent through orchestration while also resolving
+admissibility at the point of irreversible execution. In such environments,
+resistance management, orchestration integrity, network conservation, and
+commit-time admissibility become coequal determinants of organizational
+viability.
 
-\section{Psychological Interpretation}
-\label{sec:psychology}
-
-The model generates predictions about individual psychological states
-as functions of the structural variables. These predictions connect the
-model's constructs to well-established empirical findings, but the
-specific causal path proposed---from structural variables to heat to
-psychological state---is the model's hypothesis, not a claim directly
-supported by the cited sources.
-
-The psychological interpretation developed in this section applies primarily to the consequences of structural resistance, autonomy imbalance, and organizational heat. A separate class of failure arises when inadmissible actions are committed despite apparently orderly preparation. Those failures may also generate psychological consequences---for example anxiety, blame, distrust, or moral injury---but they are not reducible to heat alone and depend additionally on the organization’s commit architecture.
-
-\begin{itemize}
-  \item \textbf{Low Legitimacy (high Insignificance):} when an agent's
-    organizational standing is systematically undermined, effective Autonomy
-    approaches zero. The model predicts behavioral passivity; the
-    corresponding empirical construct is learned helplessness
-    \citep{seligman1975helplessness}---a state in which prior non-contingent
-    outcomes suppress future initiative. The structural parallel is
-    suggestive, though the original helplessness research was conducted
-    in individual learning contexts, not organizational ones.
-
-  \item \textbf{High Risk (low effective Capability):} when perceived
-    environmental demands exceed effective competence, the model predicts
-    aversive arousal; the empirical correlate is anxiety
-    \citep{lazarus1984stress}. Again, the structural prediction is consistent
-    with this finding, but the path from the model's formal variables to
-    the psychological outcome requires empirical mediation analysis to
-    establish.
-
-  \item \textbf{High Flow with High Resistance:} sustained action output
-    against high structural friction is predicted by the heat equation to
-    generate rapid energy dissipation. The empirical correlate is burnout
-    \citep{maslach1981measurement}. The demand--resource framework in burnout
-    research \citep{demerouti2001job} offers a closely parallel structural
-    account in which demands exceeding resources produce exhaustion, lending
-    theoretical support to this mapping.
-
-  \item \textbf{Balanced Flow:} when Autonomy is matched to Resistance,
-    flow is stable and productive. The predicted psychological correlate is
-    Csikszentmihalyi's flow state \citep{csikszentmihalyi1990flow}, in which
-    challenge is matched to skill and action proceeds effortlessly.
-    The terminological overlap between ``action flow'' in this model and
-    ``flow'' in Csikszentmihalyi's sense is intentional but does not imply
-    that the constructs are identical.
-\end{itemize}
-
-These correspondences suggest that the framework may bridge structural
-organizational variables and psychological outcomes within a common formal
-language. That bridge requires empirical support at each link in the proposed
-causal chain.
-
-\section{Testable Predictions}
-\label{sec:predictions}
-
-The framework generates the following empirically testable predictions.
-Each is stated in a form that specifies the functional relationship and
-the conditions under which it would be falsified.
-
-\begin{enumerate}
-  \item \textbf{Superlinear heat scaling:} Organizational stress indicators
-    (absenteeism, conflict frequency, decision latency, escalation rates,
-    self-reported exhaustion) will increase superlinearly with action
-    throughput when structural resistance is held approximately constant.
-    The specific functional form predicted is quadratic. A linear
-    relationship would falsify the $H = F^2 R$ formulation and support
-    a simpler model.
-
-  \item \textbf{Resistance as a moderator of autonomy interventions:}
-    Organizational interventions that expand agent autonomy (role
-    empowerment, delegation, reduced approval requirements) will produce
-    positive performance outcomes in low-resistance contexts and null
-    or negative outcomes in high-resistance contexts, where the model
-    predicts that increased autonomy generates heat rather than flow.
-
-  \item \textbf{Overdetermination as a conflict predictor:} Decision nodes
-    at which the number of simultaneously active constraints exceeds some
-    threshold will exhibit higher rates of escalation, conflict, and
-    decision avoidance than nodes operating below that threshold,
-    controlling for other organizational characteristics.
-
-  \item \textbf{Commit-time admissibility as a predictor of execution validity:}
-    Organizations that bind admissibility checks directly to the point of irreversible execution will exhibit lower rates of invalid commitments, decision reversals, exception escalations, and compliance breaches than organizations relying primarily on upstream approvals or documentation, controlling for industry and complexity.
-
-  \item \textbf{Coherence--admissibility dissociation:}
-    Measures of cross-layer coherence (for example, strategy--workflow alignment, role clarity, and policy consistency) and measures of commit-time admissibility control (for example, execution-time permission validation, contextual policy evaluation, or live constraint checks) will each explain unique variance in organizational outcomes. A model in which only one of the two is predictive would falsify the present claim that coherence failure and admissibility failure are distinct mechanisms.
-    
-  \item \textbf{AI-induced heat and invalid commitment in under-architected systems:}
-    Organizations introducing AI systems that substantially increase decision throughput without proportionate architectural redesign will exhibit increased organizational heat indicators, measurable as increased coordination overhead, role conflict, and decision reversal rates, relative to organizations that co-invest in resistance reduction and commit-time admissibility mechanisms.    
-    
-  \item \textbf{Legitimacy--Capability asymmetry in intervention effectiveness:}
-    Competence development interventions (training, tools) applied in
-    low-legitimacy contexts will not produce proportionate improvements in
-    effective Autonomy, because the multiplicative form implies that
-    Capability gains are multiplied by a near-zero Legitimacy factor.
-    Conversely, authority expansion in low-Capability contexts is predicted
-    to increase Risk demand (by raising the stakes of action) without
-    a proportionate gain in effective Capability, producing net heat.
-
-  \item \textbf{Loop drift from potential imbalance:} Decision cycles
-    in which the driving potential---measured as invested effort, authority
-    commitment, and resource allocation---is consistently mismatched to
-    outputs will exhibit systematic drift in cycle time, revision frequency,
-    and strategy--execution divergence, at rates exceeding those observed
-    in cycles where potential and output are balanced.
-\end{enumerate}
 
 \section{Limitations of the Model}
 \label{sec:limitations}
