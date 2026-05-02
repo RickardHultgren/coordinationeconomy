@@ -22,9 +22,9 @@
   urlcolor=black
 }
 
-\title{Flow, Autonomy, and Organizational Heat: \\
-A Physical Systems Analogy for Psychology, Decision Architecture,
-and Organization Design}
+\title{The Coordination Economy: Intention Architecture, \\
+Orchestration Failure, and Valid Commitment \\
+in AI-Augmented Organizations}
 
 \author{Rickard Hultgren}
 \date{\today}
@@ -40,12 +40,38 @@ or communication. This paper develops a conceptual framework, grounded in hydrau
 electrical circuit analogies, to model how autonomy, legitimacy, capability, risk, and
 structural complexity interact to produce either smooth coordinated action or what we
 term \textit{organizational heat}---the dissipative byproduct of action flow encountering
-structural resistance. The framework proposes five core formal relations as modeling hypotheses: autonomy as the product of legitimacy and capability; legitimacy and capability as bounded quantities subject to reduction by insignificance and risk, respectively; action flow as a ratio of autonomy to complexity resistance; and organizational heat as proportional to the square of flow times resistance. It further distinguishes between legitimacy as durable standing within a decision domain and admissibility as the execution-time validity of a specific act under current conditions. These algebraic forms are the
-authors' own formalizations by analogy to physical circuit theory and are not directly
-derived from the cited literatures, which are invoked to motivate the conceptual
-components rather than to validate the specific functional forms. The model is extended through Kirchhoff-like network constraints applied to decision architectures, through a distinction between coordination flow and irreversible commitment, and through analysis of how AI-augmented organizations alter the flow--resistance--heat balance while increasing the importance of commit-time admissibility checks.
-We conclude with testable predictions that could validate or refute the framework's
-structural assumptions, and with an explicit assessment of model limitations.
+structural resistance. The framework proposes five core formal relations as modeling
+hypotheses: autonomy as the product of legitimacy and capability; legitimacy and
+capability as bounded quantities subject to reduction by insignificance and risk,
+respectively; action flow as a ratio of autonomy to complexity resistance; and
+organizational heat as proportional to the square of flow times resistance.
+
+The central thesis is that in the coordination economy---environments in which the
+binding constraint on value creation is not production capacity but the preservation of
+legitimate intention across translation, delegation, automation, and irreversible
+commitment---the scarce capability is not decision-making per se. It is the ability to
+ensure that \emph{intention}, the upstream human or organizational meaning (what is being
+pursued, why, under what trade-offs, and with what consequence ownership), survives
+faithful translation into \emph{intent}, the encoded or operationalized version of that
+meaning inside workflows, prompts, policies, metrics, and systems. Coordination failure
+occurs precisely when intention is translated into intent, and the encoded intent no
+longer faithfully carries the original trade-offs, constraints, or ownership.
+
+The framework proposes four architectural layers: \emph{intention architecture}, which
+defines what the system is trying to preserve; \emph{decision architecture}, which
+defines who has standing to decide; \emph{orchestration architecture}, which defines how
+decisions are translated into coordinated action; and \emph{commit architecture}, which
+defines whether a specific action remains admissible when it becomes irreversible. It
+further distinguishes standing legitimacy from execution-time admissibility. These
+algebraic forms are the authors' own formalizations by analogy to physical circuit theory
+and are not directly derived from the cited literatures, which are invoked to motivate
+the conceptual components rather than to validate the specific functional forms. The
+model is extended through Kirchhoff-like network constraints applied to decision
+architectures and through analysis of how AI-augmented organizations alter the
+flow--resistance--heat balance while dramatically increasing the importance of both
+orchestration integrity and commit-time admissibility checks. We conclude with testable
+predictions that could validate or refute the framework's structural assumptions, and
+with an explicit assessment of model limitations.
 \end{abstract}
 
 \tableofcontents
@@ -79,33 +105,55 @@ empirical findings; they are introduced because they generate tractable,
 falsifiable predictions, not because they are established by the literatures
 cited for motivation.
 
+The core problem this framework addresses is not merely coordination cost or
+decision throughput. It is the preservation of \emph{legitimate intention} as
+it moves through people, workflows, systems, AI agents, and irreversible
+commitments. We use \emph{intention} to refer to the upstream human or
+organizational meaning: what is being pursued, why, under what trade-offs, and
+with what consequence ownership. We use \emph{intent} to refer to the encoded
+or operationalized version of that meaning as it appears inside workflows,
+prompts, policies, metrics, automation logic, and system instructions.
+This distinction matters because coordination failure most often occurs not
+when intention is simply ignored, but when intention is translated into intent
+and the encoded intent no longer faithfully carries the original trade-offs,
+constraints, or ownership. Each translation step---from strategic decision to
+workflow design, from workflow design to task instruction, from task
+instruction to AI prompt, from prompt to execution---introduces the possibility
+of silent drift. The cumulative effect of individually reasonable translations
+can be an organization that operates efficiently in pursuit of a subtly
+different objective than the one its principals intended.
+
 A further refinement is necessary. In complex organizations, the first visible
-symptoms of failure often appear in execution---for example, on the shop
-floor, in service delivery, in customer outcomes, or in compliance breaches.
-Yet execution commonly reveals the symptom rather than the point of origin.
-Likewise, data inconsistencies, reporting anomalies, or KPI conflicts may
-appear to be the first breakdown, while in fact they often reflect a prior
-distortion in how the underlying work was decomposed, routed, sequenced,
-escalated, or reconciled. The present framework therefore gives analytic
-priority to the \emph{workflow or orchestration layer}: the intermediate
-structure through which strategic and managerial intent is translated into
-tasks, handoffs, system actions, escalation paths, and coordinated execution.
+symptoms of failure often appear in execution---on the shop floor, in service
+delivery, in customer outcomes, or in compliance breaches. Yet execution
+commonly reveals the symptom rather than the point of origin. Likewise, data
+inconsistencies, reporting anomalies, or KPI conflicts may appear to be the
+first breakdown, while in fact they often reflect a prior distortion in how the
+underlying work was decomposed, routed, sequenced, escalated, or reconciled.
+The present framework therefore gives analytic priority to the
+\emph{workflow or orchestration layer}: the intermediate structure through
+which strategic and managerial intention is translated into intent---that is,
+into tasks, handoffs, system actions, escalation paths, and coordinated
+execution.
 
 This distinction matters because organizations do not act directly on strategy.
-They act through orchestrated workflows. If the workflow or orchestration layer
-encodes a slightly altered version of the original decision, then downstream
-actors, systems, and data structures may all behave in ways that are locally
-consistent while globally misaligned with the organization's actual intent.
-The present paper therefore argues that many coordination failures should be
-understood not simply as failures of communication or authority, but as
-failures of \emph{intent preservation through orchestration}.
+They act through orchestrated workflows that encode an operationalized version
+of strategic intention. If the workflow or orchestration layer encodes a
+slightly altered version of the original decision, then downstream actors,
+systems, and data structures may all behave in ways that are locally consistent
+with their encoded intent while globally misaligned with the organization's
+actual intention. The present paper therefore argues that many coordination
+failures should be understood not simply as failures of communication or
+authority, but as failures of \emph{intention preservation through
+orchestration}: the gradual substitution of encoded intent for the original
+intention as translation proceeds.
 
 A second complication arises in distributed and partially automated systems:
-even when decisions are initially well-founded and even when orchestration
-remains coherent, the conditions that made a specific action valid may change
-before the action is actually committed. This implies that organizations face
-not one but two distinct control problems. First, they must preserve coherent
-intent as decisions are translated into workflows across humans, teams,
+even when decisions are initially well-founded and orchestration remains
+coherent, the conditions that made a specific action valid may change before
+the action is actually committed. This implies that organizations face not one
+but two distinct control problems. First, they must preserve intention as it
+is translated into intent and then into workflows across humans, teams,
 software systems, and AI agents. Second, they must determine whether a
 specific act remains admissible at the moment it becomes irreversible. The
 present paper argues that both problems must be modeled explicitly and that
@@ -121,12 +169,14 @@ support.
 Across these literatures, authority, control, and validity are often discussed
 without sharply distinguishing durable standing from execution-time
 authorization, and workflow structure is often treated as an implementation
-detail rather than as a primary site of strategic distortion. The present
-framework departs from this tendency in two ways. First, it distinguishes
-durable standing legitimacy from execution-time admissibility. Second, it
-treats workflow or orchestration architecture as the principal intermediate
-layer at which intent is either preserved or lost before downstream data and
-execution outcomes make the loss visible.
+detail rather than as a primary site of intention degradation. The present
+framework departs from this tendency in three ways. First, it distinguishes
+upstream \emph{intention} from operationalized \emph{intent}, treating the
+fidelity of translation between them as the central coordination problem.
+Second, it distinguishes durable standing legitimacy from execution-time
+admissibility. Third, it treats workflow and orchestration architecture as the
+principal intermediate layer at which intention is either preserved or lost
+before downstream data and execution outcomes make the loss visible.
 
 \paragraph{Self-Determination Theory (SDT).}
 Deci and Ryan's self-determination theory \citep{deci2000self, ryan2000self}
@@ -169,12 +219,12 @@ is systematically produced by structural mismatches between complexity and
 regulatory capacity. This provides empirical and theoretical grounding for the
 claim that structural properties, rather than individual behavior alone,
 determine system stability. The present framework extends this claim by
-proposing that one important locus of early instability is the workflow or
-orchestration layer, where regulatory intent is first transformed into
-operational sequence, routing, and handoff logic. The further claim that such
-instability manifests as a quadratic heat function remains a model prediction
-that requires empirical testing against the failure-mode patterns that Perrow
-and Beer document.
+proposing that one important locus of early instability is the intention--intent
+translation layer: the workflow or orchestration structure where intention is
+first converted into operational sequence, routing, and handoff logic. The
+further claim that such instability manifests as a quadratic heat function
+remains a model prediction that requires empirical testing against the
+failure-mode patterns that Perrow and Beer document.
 
 \paragraph{Coordination Costs and Organization Design.}
 Transaction cost economics \citep{williamson1981economics} and coordination
@@ -186,8 +236,9 @@ The present model builds on this tradition by treating coordination cost not
 only as a static burden but as a dynamic resistance parameter that interacts
 with autonomy to produce either stable throughput or dissipative heat. It
 further argues that in high-complexity systems this burden is mediated
-centrally by orchestration architecture: the structural layer where decisions
-are decomposed into executable paths across roles and systems.
+centrally by intention architecture and orchestration architecture: the
+structural layers where intention is first captured and then decomposed into
+executable paths across roles and systems.
 
 \subsection{Overview of the Framework}
 
@@ -201,21 +252,30 @@ distinctions as a coherent set of modeling hypotheses:
   \item Action flow as autonomy divided by complexity resistance
   \item Organizational heat as the square of flow multiplied by resistance
   \item Kirchhoff-like conservation constraints on decision networks
+  \item Intention architecture as the structural specification of what the
+    system is trying to preserve: the upstream human or organizational meaning,
+    trade-offs, constraints, and consequence ownership
   \item Decision architecture as the structural allocation of standing authority
-  \item Orchestration architecture as the structural layer through which intent is decomposed, routed, sequenced, escalated, and either preserved or distorted
-  \item Commit architecture as the determinant of whether action remains admissible at the moment of irreversible execution
+    over who may decide within a given domain
+  \item Orchestration architecture as the structural layer through which
+    intention is encoded into intent and then decomposed, routed, sequenced,
+    escalated, and either faithfully preserved or silently distorted
+  \item Commit architecture as the determinant of whether action remains
+    admissible at the moment of irreversible execution
 \end{enumerate}
 
 These relations do not all operate at the same layer. The first six concern
 the generation, routing, and dissipation of coordinated action through an
-organizational network. The seventh concerns who possesses recognized standing
-to decide within a domain. The eighth concerns how those decisions are
-translated into coordinated workflows across human and technical components.
-The ninth concerns a distinct but related problem: whether a specific action
-remains admissible at the point of commitment. Their value as a theoretical
-contribution depends not on the precision of the analogy to physics but on
-whether they generate predictions that can be tested against organizational
-data. Section~\ref{sec:predictions} develops these predictions explicitly.
+organizational network. The seventh concerns what the organization is actually
+trying to preserve. The eighth concerns who possesses recognized standing to
+decide within a domain. The ninth concerns how intention is encoded into intent
+and then translated into coordinated workflows across human and technical
+components. The tenth concerns a distinct but related problem: whether a
+specific action remains admissible at the point of commitment. Their value as
+a theoretical contribution depends not on the precision of the analogy to
+physics but on whether they generate predictions that can be tested against
+organizational data. Section~\ref{sec:predictions} develops these predictions
+explicitly.
 
 Figure~\ref{fig:model} presents the integrated model.
 
@@ -231,8 +291,75 @@ are measurable in physical units.}
 \end{figure}
 
 
-\section{Decision, Orchestration, and Commit Architecture}
+\section{Intention, Decision, Orchestration, and Commit Architecture}
 \label{sec:architecture}
+
+\subsection{Intention Architecture: The Upstream Layer}
+\label{sec:intention_architecture}
+
+The framework introduces \emph{intention architecture} as the foundational
+upstream layer that the three downstream architectural layers---decision,
+orchestration, and commit---exist to serve. Intention architecture is defined
+as the structural arrangement by which an organization specifies, maintains,
+and propagates its operative intentions: what it is trying to achieve, why,
+under what trade-offs, with what constraints, and with what consequence
+ownership.
+
+The distinction between \emph{intention} and \emph{intent} is central to
+the model and deserves careful treatment. \emph{Intention} refers to the
+upstream human or organizational meaning---the fully-contextualized purpose
+held by decision-makers who understand the trade-offs, constraints, and
+stakes. \emph{Intent} refers to the encoded or operationalized version of
+that meaning as it appears inside workflows, written policies, system prompts,
+optimization metrics, process documentation, and automation logic. Intent is
+always a representation of intention; it is never identical to it.
+
+This distinction generates the model's central claim about coordination
+failure. Organizations do not lose their way simply because their members
+disobey instructions or pursue misaligned interests. They lose their way when
+intention is translated into intent---at each step of decomposition,
+delegation, encoding, and automation---and the encoded intent no longer
+faithfully carries the original trade-offs, constraints, or ownership. Each
+such translation is locally reasonable, individually defensible, and often
+procedurally correct. The cumulative effect is an organization executing
+efficiently toward a subtly different objective.
+
+Intention architecture addresses this problem at its source. Rather than
+treating intention as an informal background assumption that everyone is
+expected to share, intention architecture makes the following explicit and
+structurally embedded:
+
+\begin{itemize}
+  \item \textbf{Purpose and trade-off specification:} what is being pursued
+    and which competing values have been resolved in favor of the stated
+    objective, so that downstream encoders know which simplifications are
+    acceptable and which are not.
+  \item \textbf{Constraint ownership:} which constraints are hard
+    (non-negotiable under current conditions) and which are soft (subject to
+    contextual override), and who bears responsibility for violations if
+    constraints are treated incorrectly.
+  \item \textbf{Translation accountability:} structural mechanisms by which
+    each step of encoding---from intention to workflow, from workflow to task,
+    from task to prompt, from prompt to execution---is subject to verification
+    that the encoded intent faithfully represents the originating intention.
+  \item \textbf{Drift detection:} feedback mechanisms that compare downstream
+    execution and outcomes against the original intention, not merely against
+    the most recent encoded intent, so that accumulated translation drift
+    becomes visible before it becomes embedded in data structures, compliance
+    records, and institutional memory.
+\end{itemize}
+
+Without intention architecture, decision architecture operates on an implicit
+and unverified understanding of what it is deciding toward. Orchestration
+architecture translates a representation that may already have drifted.
+Commit architecture validates an action against conditions that may no longer
+reflect the originating intention. The three downstream layers can each
+function correctly by their own internal criteria while jointly producing
+coordinated action that is globally misaligned with what the organization
+actually intended to pursue.
+
+\subsection{Decision Architecture}
+\label{sec:decision_architecture}
 
 Decision architecture is defined in this framework as the structural
 configuration that allocates standing authority across an organizational
@@ -240,139 +367,184 @@ system: who may decide, within which domain, under which recognized mandate,
 and with what escalation relationships. In the present model, decision
 architecture primarily shapes legitimacy and the distribution of recognized
 decision rights. It answers the question of \emph{who is structurally entitled
-to decide in principle}.
+to decide in principle}---but it does so in service of the intention
+architecture above it.
 
-Decision architecture alone, however, does not determine whether intent
-survives translation into action. Organizations rarely act directly on
-decision rights. They act through workflows. For this reason, the present
-framework distinguishes decision architecture from \emph{orchestration
-architecture}: the structural configuration through which decisions are
-decomposed, routed, sequenced, escalated, reconciled, and translated into
-coordinated action across human actors, software systems, and AI agents.
+Decision architecture alone does not determine whether intention survives
+translation into action. It specifies who may act with standing; it does not
+specify what those actors are preserving when they act, nor how their decisions
+are encoded and routed through the organizational system.
+
+\subsection{Orchestration Architecture: Where Intention Becomes Intent}
+\label{sec:orchestration_architecture}
+
+Orchestration architecture is defined as the structural configuration through
+which intentions are encoded into intent and then decomposed, routed,
+sequenced, escalated, reconciled, and translated into coordinated action
+across human actors, software systems, and AI agents. It is the layer where
+the gap between intention and intent is either maintained at a tolerable level
+or allowed to widen into failure.
+
 Orchestration architecture is the primary design lever for
 $\text{Resistance}_{\text{Complexity}}$ and the principal intermediate layer
-at which coherence is either preserved or lost.
+at which coherence is either preserved or lost. Each handoff, routing rule,
+decomposition decision, and escalation path encodes a specific interpretation
+of the intention that preceded it. If those encodings are not constrained by
+intention architecture, they accumulate drift silently: the workflow remains
+procedurally orderly, local metrics remain satisfied, and approvals are
+correctly assigned, yet the overall sequence pursues a slightly altered
+objective.
 
-A further distinction is required. Even when decision rights are clear and
-workflow orchestration remains coherent, a specific act may still no longer be
-valid when execution occurs. For that reason, decision architecture and
-orchestration architecture must both be distinguished from \emph{commit
-architecture}: the structural mechanism through which admissibility is
-resolved at the point where action becomes materially, financially,
-technically, or institutionally irreversible.
+\subsection{Commit Architecture}
+\label{sec:commit}
 
-We denote execution-time admissibility for a specific act $a$ at time $t$ as
+Commit architecture is defined as the structural arrangement by which the
+system determines whether a specific act remains admissible at the point where
+execution becomes materially, financially, technically, or institutionally
+irreversible. We denote execution-time admissibility for a specific act $a$
+at time $t$ as
 \[
 \mathcal{A}(a,t) \in \{0,1\},
 \]
 where $\mathcal{A}(a,t)=1$ indicates that the act remains valid under current
 conditions at the commit point, and $\mathcal{A}(a,t)=0$ indicates that it
-does not. This notation is intentionally minimal. The present paper does not
-yet specify the full functional form of admissibility, but introduces it to
-mark the conceptual distinction between durable standing legitimacy and
-execution-time validity.
+does not.
+
+Commit architecture is necessary because upstream governance artifacts---
+policies, role assignments, workflow approvals, and documentation---shape and
+constrain action but do not by themselves constitute control in the strong
+sense. If the validity of the act is not resolved where the system commits,
+those upstream elements function as preparation rather than decisive control.
+Importantly, commit architecture must evaluate admissibility not only against
+currently encoded intent, but against the originating intention where those
+two have diverged.
+
+A robust commit architecture must do at least three things. First, it must
+identify the commit point clearly enough that irreversible action is not
+occurring invisibly elsewhere in the stack. Second, it must make the
+admissibility conditions for that class of action explicit enough to be
+evaluated under current conditions, including whether the encoded intent at
+the commit point still faithfully represents the originating intention. Third,
+it must bind the result of that evaluation directly to execution, so that
+inadmissible actions are blocked rather than merely recorded, questioned, or
+retrospectively audited.
+
+\subsection{The Four-Layer Hierarchy}
+
+The four architectural layers form a dependency hierarchy. Intention
+architecture defines what the system is trying to preserve. Decision
+architecture defines who has standing to decide in service of that intention.
+Orchestration architecture defines how those decisions are translated into
+coordinated action while preserving (or distorting) the intention. Commit
+architecture defines whether the action remains admissible when it becomes
+irreversible, and whether the encoded intent at that point still faithfully
+represents the originating intention.
+
+This hierarchy is summarized as follows:
+
+\begin{enumerate}
+  \item \textbf{Intention architecture:} What is the system trying to
+    preserve? What are the trade-offs, constraints, and consequence ownership
+    that must survive translation?
+  \item \textbf{Decision architecture:} Who has standing to decide within
+    each domain, and under what recognized mandate?
+  \item \textbf{Orchestration architecture:} How is the decision encoded into
+    intent and translated into coordinated action across people, systems, and
+    agents? Where does the intention--intent gap widen?
+  \item \textbf{Commit architecture:} Is this specific act still admissible
+    under current conditions, and does the encoded intent at this commit point
+    still faithfully represent the originating intention?
+\end{enumerate}
+
+Without intention architecture, the downstream three layers operate on an
+unverified and potentially drifted representation of what the organization
+is actually trying to do. Decision-makers decide correctly within their
+domains but toward an encoded objective that has already departed from the
+original. Workflows route efficiently but amplify the drift. Commit checks
+validate against conditions that no longer reflect the originating purpose.
+The system remains internally consistent while globally misaligned.
 
 \subsection{Relationship to Governance, Management, and Control Systems}
 \label{sec:governance}
 
-The three architectural layers introduced here operate at a different level of
+The four architectural layers introduced here operate at a different level of
 abstraction from governance, management, and control systems. Governance
 specifies who has ultimate authority. Management specifies how that authority
 is exercised in planning, coordination, and supervision. Control systems
 specify how deviations from desired states are detected and corrected. The
 present framework introduces a more structural decomposition.
 
-Decision architecture specifies how standing authority is distributed across
-roles and domains. Orchestration architecture specifies how those decisions
-are transformed into routable, sequenced, and enforceable action paths.
-Commit architecture specifies how the system determines whether a specific act
-may still proceed when execution becomes irreversible. Together these layers
-define not merely who governs and who acts, but how intent travels from
-recognized authority into operational reality and whether that action remains
-valid when it commits.
+Intention architecture specifies what the system is trying to preserve across
+all translation and delegation. Decision architecture specifies how standing
+authority is distributed across roles and domains in service of that
+intention. Orchestration architecture specifies how those decisions are
+transformed into routable, sequenced, and enforceable action paths while
+preserving or distorting intention. Commit architecture specifies how the
+system determines whether a specific act may still proceed when execution
+becomes irreversible. Together these layers define not merely who governs and
+who acts, but how intention travels from recognized purpose into operational
+reality, and whether the action that ultimately commits still faithfully
+reflects that purpose.
 
 This construct is conceptually related to Beer's viable systems model
 \citep{beer1972brain}, in which system-level cohesion depends on the
 regulatory structure of the metasystem. It is also related to Williamson's
 treatment of organizational form as a determinant of transaction costs
 \citep{williamson1981economics}. The present model extends these frameworks by
-separating the distribution of authority from the preservation of intent
-through orchestration and from the execution-time resolution of admissibility.
-Whether this layered decomposition adds predictive value over more traditional
-governance and coordination-cost accounts is an open empirical question.
+separating the specification of intention from the distribution of authority,
+the preservation of intention through orchestration, and the execution-time
+resolution of admissibility. Whether this layered decomposition adds
+predictive value over more traditional governance and coordination-cost
+accounts is an open empirical question.
 
 \subsection{Workflow and Orchestration as the First Instability Layer}
 \label{sec:orchestration_instability}
 
 The framework proposes that in many complex organizations the first
-operational instability appears in the workflow or orchestration layer rather
-than in execution itself. The shop floor, customer interface, service outcome,
-or compliance event typically reveals the symptom, but not the origin.
-Similarly, data discrepancies, KPI conflicts, or reporting anomalies often
-reflect already-distorted workflow logic rather than causing it. The
-orchestration layer is therefore analytically privileged: it is where
-strategic and managerial intent is first converted into routable, sequenced,
-and enforceable action logic, and where small reinterpretations can become
+operational instability appears in the orchestration layer rather than in
+execution itself. The shop floor, customer interface, service outcome, or
+compliance event typically reveals the symptom, but not the origin. Similarly,
+data discrepancies, KPI conflicts, or reporting anomalies often reflect
+already-distorted orchestration logic---encoded intent that has drifted from
+the originating intention---rather than causing it. The orchestration layer is
+therefore analytically privileged: it is where intention is first converted
+into operationalized intent, and where small reinterpretations can become
 systemically durable.
 
 This claim has a specific implication. A workflow may remain locally coherent
 at each step while globally encoding a distorted version of the original
-decision. Handoffs may be clear, approvals correctly assigned, and local
-metrics satisfied, yet the overall sequence may pursue a slightly altered
+intention. Handoffs may be clear, approvals correctly assigned, and local
+metrics satisfied, yet the overall sequence may pursue a subtly altered
 objective because the decomposition, routing, sequencing, escalation logic, or
 reconciliation structure has already shifted the effective meaning of the
 decision. In such cases, downstream execution is not malfunctioning in the
-ordinary sense; it is functioning faithfully relative to a workflow that has
-already drifted.
+ordinary sense; it is functioning faithfully relative to a workflow whose
+encoded intent has already drifted from the originating intention.
 
 The framework therefore treats orchestration architecture not as a minor
 implementation detail but as the principal structural layer through which
-intent survives or degrades. This is also the layer where human and machine
+intention survives or degrades. This is also the layer where human and machine
 action most directly interact: workflow engines, task routing systems,
 approval paths, user interfaces, exception handling, vendor handoffs, and
 agentic AI systems all operate here. As a result, this layer is expected to
-become increasingly decisive in AI-augmented organizations.
-
-\subsection{Commit Architecture and the Point of Irreversible Action}
-\label{sec:commit}
-
-Commit architecture is defined here as the structural arrangement by which the
-system determines whether a specific act remains admissible at the point where
-execution becomes materially, financially, technically, or institutionally
-irreversible. Typical commit points include code deployment, release of funds,
-grant of access, publication of instructions, execution of a trade, issuance
-of an approval that triggers downstream automation, or activation of an
-AI-originated action in a live environment.
-
-This distinction matters because upstream governance artifacts---policies, role
-assignments, workflow approvals, and documentation---shape and constrain
-action but do not by themselves constitute control in the strong sense. If the
-validity of the act is not resolved where the system commits, those upstream
-elements function as preparation rather than decisive control. The model
-therefore treats commit architecture as a separate and necessary complement to
-both decision architecture and orchestration architecture.
-
-A robust commit architecture must do at least three things. First, it must
-identify the commit point clearly enough that irreversible action is not
-occurring invisibly elsewhere in the stack. Second, it must make the
-admissibility conditions for that class of action explicit enough to be
-evaluated under current conditions. Third, it must bind the result of that
-evaluation directly to execution, so that inadmissible actions are blocked
-rather than merely recorded, questioned, or retrospectively audited.
-
-This concept is especially important in distributed and AI-augmented
-environments, where the interval between preparation and execution may be
-short, the number of candidate actions large, and the contextual conditions
-governing admissibility subject to rapid change.
+become increasingly decisive in AI-augmented organizations, where each
+additional translation point between intention and execution multiplies the
+opportunity for silent drift.
 
 \subsection{Structural Sources of Resistance}
 \label{sec:resistance_sources}
 
 The following structural properties are proposed to increase Complexity
 Resistance, with special emphasis on the orchestration layer as the place
-where these burdens are most often operationalized:
+where these burdens are most often operationalized, and with particular
+attention to those that directly widen the intention--intent gap:
 
 \begin{itemize}
+  \item \textbf{Intention underspecification:} when trade-offs, constraint
+    ownership, and consequence accountability are not made explicit by
+    intention architecture, each downstream encoder must resolve ambiguity
+    independently, producing accumulated drift that is difficult to detect or
+    reverse.
   \item \textbf{Authority ambiguity:} role conflict and boundary ambiguity
     are empirically associated with performance decrements and stress
     \citep{rizzo1970role}; the model interprets this as a resistance increase.
@@ -395,9 +567,9 @@ where these burdens are most often operationalized:
     probability of constraint violations and stale orchestration logic.
   \item \textbf{Orchestration distortion:} decomposition logic, routing rules,
     sequencing assumptions, escalation pathways, and handoff structures may
-    encode a slightly altered version of the original decision. The present
-    framework treats this as a primary source of coherence loss rather than as
-    a downstream symptom.
+    encode a slightly altered version of the originating intention. The present
+    framework treats this intention--intent gap as a primary source of
+    coherence loss rather than as a downstream symptom.
 \end{itemize}
 
 \subsection{Principles of Low-Resistance and High-Integrity Architecture}
@@ -405,9 +577,13 @@ where these burdens are most often operationalized:
 
 From the model's assumptions, the following design principles reduce
 Complexity Resistance and are therefore predicted to improve flow stability,
-reduce heat, and preserve intent more reliably:
+reduce heat, and preserve intention more reliably:
 
 \begin{enumerate}
+  \item Specifying intention explicitly---including trade-offs, constraint
+    ownership, and consequence accountability---so that downstream encoders
+    have a stable reference against which to test whether their encoded intent
+    faithfully represents the originating intention.
   \item Assigning clear, non-overlapping decision authority for each
     recognized decision class.
   \item Distinguishing explicitly between decision rights and the workflow
@@ -415,8 +591,8 @@ reduce heat, and preserve intent more reliably:
   \item Collocating authority with the specific knowledge required to
     exercise it \citep{jensen1992specific}.
   \item Designing orchestration logic---decomposition, routing, sequencing,
-    escalation, and reconciliation---so that the original decision can be
-    translated into action without silent reinterpretation.
+    escalation, and reconciliation---so that the original intention can be
+    translated into action without silent reinterpretation at each step.
   \item Designing feedback mechanisms with sufficiently low latency to
     support the required throughput rate and to detect workflow drift before
     it becomes embedded in downstream data and execution.
@@ -426,16 +602,16 @@ reduce heat, and preserve intent more reliably:
   \item Limiting the number of simultaneous incoming constraints at any node
     to within its estimated processing capacity.
   \item Making the point of irreversible commitment explicit and binding
-    admissibility checks directly to that point, so that validity is resolved
-    where execution occurs rather than assumed from earlier preparation.
+    admissibility checks directly to that point, including verification that
+    the encoded intent still faithfully represents the originating intention.
 \end{enumerate}
 
 These are predictions of the model. The general principles are consistent with
 established design guidance \citep{mintzberg1979structuring,
 williamson1981economics}, but the specific prediction that violating them
-generates superlinear heat and early orchestration instability---rather than
-merely linear coordination cost---is a novel claim that requires empirical
-support.
+generates superlinear heat and early orchestration instability---and that
+the intention--intent gap is the primary structural precursor of such
+instability---is a novel claim that requires empirical support.
 
 
 \section{Capability and Risk}
@@ -504,7 +680,16 @@ The ratio is proposed because it generates clear, testable predictions about
 the effects of autonomy expansion and resistance reduction as independent
 and interacting interventions.
 
-Action flow should not be equated with valid commitment. A decision, instruction, or prepared action may move efficiently through an organizational structure without yet being executable under current conditions. For this reason, the present framework treats flow as the movement of coordinated action potential through the system, while reserving the question of whether a specific act may actually proceed for later treatment under the concept of admissibility at commitment.
+Action flow should not be equated with valid commitment, nor with the
+preservation of intention. A decision, instruction, or prepared action may
+move efficiently through an organizational structure without yet being
+executable under current conditions, and without the encoded intent at each
+stage remaining faithful to the originating intention. The present framework
+therefore treats flow as the movement of coordinated action potential through
+the system, while reserving the question of whether that flow carries
+uncorrupted intention for the intention architecture layer, and whether a
+specific act may actually proceed for the concept of admissibility at
+commitment.
 
 $\text{Resistance}_{\text{Complexity}}$ subsumes all structural and
 informational factors that impede the throughput of decisions and actions.
@@ -568,7 +753,17 @@ which is consistent with superlinear heat accumulation but is not formalized
 in those terms. The specific quadratic form of the heat equation is a modeling
 assumption that warrants direct empirical investigation.
 
-This formulation captures dissipation generated by friction in the movement and reconciliation of coordinated action. It does not by itself capture a distinct class of failure in which an action reaches the point of execution efficiently but should not occur because its authorizing conditions are no longer satisfied. Such failures are not best understood as high heat alone, but as failures of admissibility resolution at commitment. The two may interact: high heat increases the likelihood of stale, bypassed, or weakly validated commitments, but the concepts should remain analytically distinct.
+This formulation captures dissipation generated by friction in the movement
+and reconciliation of coordinated action. It does not by itself capture a
+distinct class of failure in which the encoded intent at the point of execution
+has drifted from the originating intention, or in which an action reaches
+the point of execution efficiently but should not occur because its authorizing
+conditions are no longer satisfied. Such failures are not best understood as
+high heat alone, but as intention architecture failures or admissibility
+failures at commitment. The three concepts may interact: high heat increases
+the likelihood of stale, bypassed, or weakly validated commitments, and
+accumulated intention--intent drift may force compensating flows that generate
+additional heat. But the concepts remain analytically distinct.
 
 Substituting the flow equation yields the alternative expression:
 
@@ -619,21 +814,23 @@ decision flow:
 
 A decision node represents any locus where multiple information streams,
 authorities, or constraints must be reconciled before an output decision
-can be produced. Common examples include a project manager integrating
-inputs from engineering, finance, and compliance before committing to a
-delivery plan, or a cross-functional committee reconciling competing
-resource claims.
+can be produced. The proposed conservation principle states that if incoming
+flows consistently exceed the node's processing capacity, the excess
+accumulates as a backlog of unresolved decisions. This backlog is itself a
+source of increased Resistance for subsequent flow, creating a positive
+feedback: backlog increases resistance, which reduces effective throughput,
+which may increase heat as upstream agents attempt to force decisions through
+the congested node.
 
-The proposed conservation principle states that if incoming flows
-consistently exceed the node's processing capacity, the excess accumulates
-as a backlog of unresolved decisions. This backlog is itself a source of
-increased Resistance for subsequent flow, creating a positive feedback:
-backlog increases resistance, which reduces effective throughput, which may
-increase heat as upstream agents attempt to force decisions through the
-congested node. This feedback structure is qualitatively consistent with
-documented patterns of decision escalation and overload in management
-research \citep{sterman1989modeling}, but the formal correspondence has
-not been empirically established.
+Nodes that are also translation points---where intention is encoded into
+intent---face a compounded failure risk: under high load, the quality of
+intention--intent translation degrades. Encoders under pressure resolve
+ambiguity quickly rather than faithfully, producing encoded intent that
+satisfies throughput requirements but widens the intention--intent gap.
+This feedback structure is qualitatively consistent with documented patterns
+of decision escalation and overload in management research
+\citep{sterman1989modeling}, but the formal correspondence has not been
+empirically established.
 
 Decision nodes must reconcile all incoming constraints simultaneously,
 which may include strategic goals, resource limits, risk and compliance
@@ -643,8 +840,7 @@ simultaneously satisfy all constraints---the node cannot produce a valid
 outgoing flow. The model characterizes this as a node-level conservation
 violation. In practice, such violations manifest as decision deadlock or
 escalation; the model predicts that nodes with chronically overdetermined
-constraint sets will be persistent heat sources. This prediction is testable
-and is stated formally in Section~\ref{sec:predictions}.
+constraint sets will be persistent heat sources.
 
 \subsection{Loop Constraints: Potential Balance}
 
@@ -657,21 +853,19 @@ constraint by analogy to Kirchhoff's voltage law:
 
 This constraint states that the total driving potential invested in a
 decision cycle must be fully accounted for by productive work done against
-resistance within that cycle. When the balance is violated---when more
-potential is invested than the cycle can convert to output---the residual
-accumulates as heat or forces revision of the assumptions underlying the cycle.
-
-Organizational loops subject to potential imbalance include:
+resistance within that cycle. Organizational loops subject to potential
+imbalance include:
 
 \begin{itemize}
   \item \textbf{Strategy--execution--evaluation--strategy cycles:}
-    where strategic ambition is not matched by the capability and resistance
+    where strategic intention is not matched by the capability and resistance
     profile of the execution layer, producing persistent performance gaps
     that the feedback mechanism cannot correct \citep{sterman1989modeling}.
   \item \textbf{Policy--implementation--reporting--policy cycles:}
     where compliance reporting is structurally decoupled from implementation
     realities, producing cycles that systematically miscalibrate the
-    policy layer.
+    policy layer and allow accumulated intention--intent drift to persist
+    undetected.
   \item \textbf{Objective--action--feedback--objective cycles:}
     where feedback latency or distortion prevents accurate potential signals
     from reaching the goal-setting process.
@@ -679,15 +873,27 @@ Organizational loops subject to potential imbalance include:
 
 \subsection{Coordination Failures as Conservation Violations}
 
-The framework proposes that many coordination failures can be formally characterized as violations of node or loop conservation. A unit that generates more outgoing decisions than its incoming standing authority and constraints can support is operating with a legitimacy or coherence deficit. A unit that absorbs incoming decision flow without producing proportionate outputs is generating a resistance backlog. Both conditions degrade systemic flow efficiency and increase total organizational heat. However, satisfaction of these conservation-like constraints is not sufficient for full control, because a network may remain internally balanced while still committing an inadmissible act if validity is not resolved at the point where execution becomes irreversible.
+The framework proposes that many coordination failures can be formally
+characterized as violations of node or loop conservation. A unit that
+generates more outgoing decisions than its incoming standing authority and
+constraints can support is operating with a legitimacy or coherence deficit.
+A unit that absorbs incoming decision flow without producing proportionate
+outputs is generating a resistance backlog. Both conditions degrade systemic
+flow efficiency and increase total organizational heat. However, satisfaction
+of these conservation-like constraints is not sufficient for full control,
+because a network may remain internally balanced while still committing an
+inadmissible act if validity is not resolved at the point where execution
+becomes irreversible, and while allowing the intention--intent gap to widen
+invisibly at each translation step.
 
 This characterization has diagnostic value: it suggests that persistent
 coordination failures can be localized to specific nodes or loops where
-conservation is violated, and that structural interventions targeting
-those points should be more effective than diffuse cultural or motivational
-interventions. Whether this diagnostic strategy outperforms alternatives
-in practice is an empirical question that the present framework cannot
-resolve on theoretical grounds alone.
+conservation is violated, or where translation fidelity is consistently
+degraded, and that structural interventions targeting those points should be
+more effective than diffuse cultural or motivational interventions.
+Whether this diagnostic strategy outperforms alternatives in practice is an
+empirical question that the present framework cannot resolve on theoretical
+grounds alone.
 
 \section{AI-Native Organizations}
 \label{sec:ai}
@@ -707,11 +913,45 @@ execution, decreasing the uncertainty component of Risk.
 Under the model's flow equation $F = \text{Autonomy} / \text{Resistance}$,
 these effects produce a substantial increase in potential action flow.
 Whether that potential is realized as productive output or dissipated
-as heat depends on whether Resistance is adjusted proportionately.
-The model's prediction---and this is explicitly a model-derived prediction
-rather than an observed regularity---is that when AI increases Autonomy
-without a proportionate reduction in Resistance, the heat equation
-$H = F^2 \times \text{Resistance}$ predicts superlinear heat accumulation.
+as heat depends on whether Resistance is adjusted proportionately---and
+whether the increased speed of translation compounds or contains the
+intention--intent gap.
+
+\subsection{Why AI Widens the Intention--Intent Gap}
+
+AI systems introduce translation layers between organizational intention and
+operational action that are qualitatively different from those introduced by
+human delegation. A human delegate who misunderstands an intention can be
+questioned, corrected, and redirected. An AI system that has encoded a
+distorted version of an intention into a prompt, policy, or learned behavior
+will execute that encoding faithfully and at scale---producing high-flow,
+low-friction delivery of the wrong objective.
+
+The model identifies several mechanisms specific to AI systems by which the
+intention--intent gap is widened:
+
+\begin{itemize}
+  \item \textbf{Proxy metric substitution:} AI systems are typically
+    optimized against measurable proxies for intention rather than intention
+    itself. The gap between the proxy and the original intention is often
+    treated as acceptable during system design but compounds under
+    optimization pressure \citep{russell2019human}.
+  \item \textbf{Prompt encoding drift:} instructions, constraints, and
+    context provided to AI agents at design time encode an interpretation of
+    intention. As operational conditions change, that encoding ages, but
+    the AI system continues to execute against it.
+  \item \textbf{Objective function proliferation:} multiple AI subsystems
+    with separately specified objectives may each faithfully pursue their
+    encoded intent while collectively producing outcomes misaligned with the
+    originating intention.
+  \item \textbf{Opacity:} non-interpretable AI decisions make it difficult
+    to detect where encoded intent has departed from originating intention,
+    preventing correction before the gap becomes institutionally embedded.
+  \item \textbf{Pace asymmetry:} AI subsystems may generate and execute
+    decisions at rates that exceed the capacity of human oversight nodes
+    to detect intention--intent drift, producing backlogs of unchecked
+    translation.
+\end{itemize}
 
 \subsection{Why Heat May Increase Faster Than Flow}
 
@@ -722,26 +962,26 @@ properties of AI systems are proposed to generate resistance of their own:
 
 \begin{itemize}
   \item \textbf{Objective misalignment:} AI systems optimizing proxy
-    metrics can diverge from organizational intent, creating constraint
+    metrics can diverge from organizational intention, creating constraint
     conflicts at integration nodes \citep{russell2019human}. The model
-    treats each such conflict as a Kirchhoff node violation.
+    treats each such conflict as a Kirchhoff node violation and as an
+    intention--intent gap made operational.
   \item \textbf{Metric proliferation:} multiple AI subsystems generating
     competing performance signals increase constraint overdetermination
     at human oversight nodes.
-  \item \textbf{Opacity, legitimacy loss, and weak admissibility resolution:} non-interpretable AI decisions may reduce the social legitimacy of AI-generated standing within the human organizational system, while also making it more difficult to determine whether a specific AI-originated act remains admissible under current conditions. The model formalizes the first as an increase in Insignificance for AI-origin flows and treats the second as a commit-architecture problem.
-  \item \textbf{Pace asymmetry:} AI subsystems may generate decisions at
-    rates that exceed the processing capacity of human governance nodes,
-    producing backlogs that the model identifies as conservation violations.
+  \item \textbf{Opacity, legitimacy loss, and weak admissibility resolution:}
+    non-interpretable AI decisions may reduce the social legitimacy of
+    AI-generated standing within the human organizational system, while also
+    making it more difficult to determine whether a specific AI-originated
+    act remains admissible under current conditions or still faithfully
+    represents the originating intention. The model formalizes the first as
+    an increase in Insignificance for AI-origin flows and treats the second
+    as an intention architecture and commit architecture problem.
   \item \textbf{Cascading dependencies:} tightly coupled AI pipelines
     increase the topological complexity of the decision network, multiplying
-    the number of Kirchhoff constraints that must be simultaneously satisfied.
+    the number of Kirchhoff constraints that must be simultaneously satisfied,
+    and the number of translation steps at which intention can drift.
 \end{itemize}
-
-These effects are proposed as mechanisms by which AI integration could
-generate heat faster than flow. Whether they do so in practice, and
-whether the magnitude follows the quadratic prediction, are empirical
-questions that organizational research on AI-augmented work could
-in principle address.
 
 \subsection{Architectural Requirements for AI-Augmented Stability}
 
@@ -749,19 +989,41 @@ The model generates the following specific structural predictions for
 AI-augmented organizations:
 
 \begin{itemize}
-  \item Each AI agent requires a clearly specified authority domain, understood as the class of actions or recommendations for which it may generate prepared outputs under normal conditions.
-  \item Irreversible AI-originated actions must be subject to execution-time admissibility checks bound directly to the commit point, rather than inferred solely from prior approvals, static rules, or durable role assignments.
-  \item The objective functions of interacting AI agents must be mutually consistent to avoid loop-level potential imbalance and locally valid but globally misaligned action.
-  \item Human oversight nodes must have sufficient processing capacity to handle the flow generated by AI subsystems, or AI decision rates must be deliberately throttled to match human governance bandwidth.
-  \item Feedback latency must be low enough to detect objective drift, contextual change, and constraint conflict before they accumulate as unresolved backlogs or invalid commitments.
+  \item Intention architecture must be established before AI systems are
+    authorized to encode it: trade-offs, constraints, and consequence
+    ownership must be explicit enough that AI designers and operators can
+    verify whether their encoded intent faithfully represents the originating
+    intention.
+  \item Each AI agent requires a clearly specified authority domain,
+    understood as the class of actions or recommendations for which it may
+    generate prepared outputs under normal conditions.
+  \item Irreversible AI-originated actions must be subject to execution-time
+    admissibility checks bound directly to the commit point, including
+    verification that the encoded intent still faithfully represents the
+    originating intention under current conditions.
+  \item The objective functions of interacting AI agents must be mutually
+    consistent with the originating intention, not only with each other, to
+    avoid loop-level potential imbalance and locally valid but globally
+    misaligned action.
+  \item Human oversight nodes must have sufficient processing capacity to
+    handle the flow generated by AI subsystems, particularly at translation
+    points where intention--intent fidelity must be verified.
+  \item Feedback latency must be low enough to detect intention--intent
+    drift, objective drift, contextual change, and constraint conflict before
+    they accumulate as unresolved backlogs or invalid commitments.
 \end{itemize}
 
-These are architectural prescriptions derived from the model's assumptions.
-They are consistent with the governance recommendations of \citet{russell2019human}
-and with emerging frameworks for AI safety and controllability, but their
-specific derivation from the heat equation is novel to this framework.
-
-In AI-augmented settings, the distinction between standing legitimacy and admissibility becomes operationally decisive. A model may be correctly assigned to a decision domain, yet any particular act it advances toward execution may still be invalid when current constraints, permissions, exposures, or environmental conditions are taken into account. The control problem therefore cannot be solved by authority specification alone; it requires commit architecture capable of recomputing or re-evaluating admissibility at execution time.
+In AI-augmented settings, the distinction between upstream intention and
+encoded intent becomes operationally decisive. A model may be correctly
+assigned to a decision domain and given well-crafted instructions, yet any
+particular act it advances toward execution may still be invalid---either
+because the encoded intent has drifted from the originating intention through
+optimization, prompt aging, or objective proliferation, or because current
+constraints, permissions, or environmental conditions no longer validate the
+specific act. The control problem cannot be solved by authority specification
+or prompt engineering alone; it requires intention architecture capable of
+maintaining fidelity across translation, and commit architecture capable of
+recomputing admissibility at execution time.
 
 \section{The Coordination Economy}
 \label{sec:coordination}
@@ -771,28 +1033,39 @@ In AI-augmented settings, the distinction between standing legitimacy and admiss
 The term \textit{coordination economy} is used here to describe a class of
 productive environment in which the technical means of production are not the
 primary constraint on value creation, and the central bottleneck lies instead
-in preserving coherent and admissible action across distributed agents. This
-environment is characteristic of knowledge-intensive industries, platform
-ecosystems, regulated organizations, and multi-agent AI systems, where many
-actors can generate analysis, recommendations, and even execution-ready
-actions at low marginal cost, but where the difficulty of maintaining aligned
-direction and valid commitment grows with system scale, interdependence, and
-speed \citep{malone1994interdisciplinary, parker2016platform,
+in preserving legitimate intention across translation, delegation, automation,
+and irreversible commitment. This environment is characteristic of
+knowledge-intensive industries, platform ecosystems, regulated organizations,
+and multi-agent AI systems, where many actors can generate analysis,
+recommendations, and even execution-ready actions at low marginal cost, but
+where the difficulty of maintaining aligned direction and valid commitment
+grows with system scale, interdependence, and speed
+\citep{malone1994interdisciplinary, parker2016platform,
 puranam2012coordination}.
+
+The scarce capability in a coordination economy is not decision-making per se.
+Decisions can be distributed, automated, and accelerated. The scarce
+capability is the preservation of intention: ensuring that what the
+organization is actually trying to achieve---including its trade-offs,
+constraints, and consequence ownership---survives translation into encoded
+intent as that intent moves through people, workflows, systems, AI agents, and
+irreversible commitments. Where this capability is weak, organizations can
+generate abundant decisions, analyses, and workflow activity while still
+failing to realize valid coordinated action toward their actual intentions.
 
 In this sense, coordination cost should not be understood narrowly as the cost
 of communication or synchronization. In high-complexity environments, the
 deeper problem is that action must satisfy two distinct structural conditions
-at once. First, intent must survive translation into workflow. Strategic and
-managerial decisions must be decomposed, routed, sequenced, escalated, and
-reconciled without silently altering what the organization is actually trying
-to do. Second, a specific act must remain admissible at the moment of
-execution: the authority, context, and constraint set under which the action
-becomes irreversible must still render that action valid under current
-conditions.
+at once. First, intention must survive translation into workflow: strategic and
+managerial intentions must be encoded into intent that is then decomposed,
+routed, sequenced, escalated, and reconciled without silently altering the
+original trade-offs, constraints, and consequence ownership. Second, a
+specific act must remain admissible at the moment of execution: the authority,
+context, and constraint set under which the action becomes irreversible must
+still render that action valid under current conditions.
 
 The central bottleneck in a coordination economy is therefore not merely
-moving information or obtaining approvals. It is preserving intent through
+moving information or obtaining approvals. It is preserving intention through
 orchestration while still resolving admissibility at commitment. Where this
 capability is weak, organizations can generate abundant decisions, analyses,
 and workflow activity while still failing to realize valid coordinated action.
@@ -803,127 +1076,45 @@ The earlier sections model legitimacy as a structural component of autonomy: a
 relatively durable property of recognized standing within an organizational
 decision system. That concept remains necessary, but it is not sufficient.
 Possessing standing authority does not ensure that the authority will be
-translated into action faithfully. Between recognized decision rights and
-irreversible execution lies an intermediate layer: workflow or orchestration
-architecture.
+translated into action faithfully---and faithfulness here means not merely
+procedural correctness, but fidelity to the originating intention.
 
-This layer determines how decisions are operationalized across handoffs,
-systems, teams, and increasingly AI agents. It determines how a decision is
-broken into sub-decisions, how tasks are routed, how dependencies are ordered,
-how exceptions are escalated, and how conflicting constraints are reconciled.
-In doing so, it becomes the principal site where coherence is either preserved
-or lost. The present framework therefore proposes that data problems and
-execution breakdowns are often downstream observability surfaces of
-orchestration failure rather than the primary origin of drift.
+Between recognized decision rights and irreversible execution lies an
+intermediate layer: workflow or orchestration architecture. This layer
+determines how intentions are encoded into intent, how that intent is broken
+into sub-decisions, how tasks are routed, how dependencies are ordered, how
+exceptions are escalated, and how conflicting constraints are reconciled. In
+doing so, it becomes the principal site where the intention--intent gap either
+remains tolerable or widens into failure.
 
 The coordination economy is therefore not only an economy of alignment across
-distributed actors; it is an economy of preserving intent as decisions are
-translated into workflows. A system with clear authority but weak
-orchestration integrity may remain procedurally orderly while advancing a
-distorted version of the original objective. Conversely, a system with strong
-orchestration but weak standing legitimacy may route work efficiently while
-lacking recognized mandate or acceptance. Durable coordinated performance
-requires both.
-
-\subsection{Why Flow, Resistance, and Heat Matter at Scale}
-
-The flow--resistance--heat framework developed in Sections~\ref{sec:flow}
-and~\ref{sec:heat} remains central to this analysis. It models the
-organizational cost of moving decisions and actions through complex
-structures. In low-complexity, low-throughput environments, the heat
-generated by suboptimal architecture may remain modest. As throughput,
-interdependence, and coupling increase, however, the architecture's
-resistance profile becomes increasingly consequential. Under the model's
-assumptions, systems with higher resistance generate more dissipation,
-greater backlog, and more frequent escalation for the same nominal level of
-action flow. The result is that architectural advantages compound with
-scale.
-
-In coordination-economy environments, however, throughput alone is not the
-relevant measure of success. A system may exhibit high flow in the sense of
-rapid decision preparation, routing, and authorization, while still failing
-to preserve the original intent through the orchestration layer. In such
-cases, rework, escalation, conflict, and fatigue may arise not only from high
-volume under resistance, but from repeated attempts to force throughput
-through workflows that already encode a drifted objective. Heat therefore
-captures not only overload but also dissipation generated by compensating for
-distorted coordination logic.
-
-For this reason, the present framework distinguishes analytically between
-\textit{coordination flow} and \textit{commitment}. Coordination flow refers
-to the movement of intent, information, authority claims, and preparatory
-decisions through the organizational network. Commitment refers to the moment
-at which action becomes materially or institutionally irreversible---for
-example, deployment of code, release of funds, grant of access, issuance of
-an instruction, or execution of an AI-originated action in a live
-environment.
-
-This distinction matters because the structural conditions required for high
-flow are not identical to those required for valid commitment. A system may
-be optimized for throughput while still committing inadmissible actions if
-the final execution point does not resolve whether the action is still valid
-under current conditions. In such cases, earlier governance, documentation,
-and workflow steps function only as preparation. They may shape the action,
-but they do not control it in the strong sense unless admissibility is
-resolved where the system commits.
-
-The coordination economy therefore operates under a dual structural burden.
-Organizations must reduce resistance sufficiently to sustain coherent flow
-through the orchestration layer, but they must also ensure that irreversible
-action is conditioned on execution-time validity. The first burden is
-captured by the resistance and heat relations introduced earlier. The second
-burden introduces an additional architectural requirement: the system must not
-merely transport authority claims; it must determine whether action is still
-admissible when execution occurs.
-
-\subsection{Preparation, Orchestration, Commitment, and Control}
-
-A central implication of the present framework is that preparation should not
-be conflated with control, and that orchestration should not be mistaken for a
-purely technical implementation layer. Organizations invest heavily in
-preparatory structures: governance committees, policy documents, approval
-chains, workflow steps, model documentation, and audit trails. These may shape
-the generation and routing of action significantly. But unless they preserve
-intent through orchestration and bind the point at which irreversible action
-occurs, they do not control execution in the strongest sense.
-
-This distinction matters because many organizational pathologies arise
-precisely when preparation is mistaken for control. A system may appear
-well-governed because decisions are documented, authority domains are
-assigned, workflows are formalized, and approvals are captured, while still
-allowing either of two structural failures. First, the workflow may have
-already encoded a distorted version of the original decision. Second, an
-inadmissible act may still commit because no mechanism resolves current
-validity at execution time. In such cases, the organization has designed the
-preparation path and perhaps even the process map, but not the full control
-path.
-
-The coordination economy therefore depends on three related but non-identical
-architectures. The first is the \emph{decision architecture} that assigns
-standing authority. The second is the \emph{orchestration architecture} that
-preserves coherence, reduces resistance, and translates decisions into
-coordinated action paths. The third is the \emph{commit architecture} that
-determines whether the act remains admissible under current conditions at the
-moment the system commits. Durable advantage requires all three.
+distributed actors; it is an economy of preserving intention as it is encoded
+into intent and then translated into workflows. A system with clear authority
+but weak intention architecture may route work efficiently while pursuing an
+encoded objective that has already drifted from the original. Conversely, a
+system with strong intention architecture but weak orchestration integrity may
+preserve the specification of intention while still distorting it in
+translation. Durable coordinated performance requires both.
 
 \subsection{Two Distinct Failure Modes: Orchestration Failure and Commit Failure}
 
-This refinement clarifies that large-scale coordination failure can arise
-through two analytically distinct mechanisms, which may occur independently or
-jointly.
+Large-scale coordination failure can arise through two analytically distinct
+mechanisms, which may occur independently or jointly.
 
 First, systems may fail through \textit{orchestration failure}. In this case,
-the original strategic or operational intent is progressively reinterpreted as
-it moves through decomposition logic, routing rules, handoffs, sequencing
+the original strategic or operational intention is progressively reinterpreted
+as it moves through decomposition logic, routing rules, handoffs, sequencing
 structures, escalation paths, vendor interfaces, software systems, and
-automation pipelines. Each local translation may appear reasonable, and each
-step may remain procedurally valid, yet the action ultimately committed is no
-longer aligned with the intent the organization sought to realize. The failure
-here is not necessarily stale authority but structural drift: the system
-preserves permissions, process conformance, or local optimization while losing
-global directional integrity. The first practical instability often appears in
-the orchestration layer, while execution and data reveal the consequences only
-later.
+automation pipelines. Each local translation encodes a version of intent that
+is slightly simplified, slightly shifted, or optimized against a slightly
+different criterion. Each step may appear reasonable, and each step may remain
+procedurally valid, yet the action ultimately committed is no longer aligned
+with the intention the organization sought to realize. The failure here is
+intention--intent drift: the system preserves permissions, process
+conformance, or local optimization while losing the original trade-offs,
+constraints, and consequence ownership. The first practical instability often
+appears in the orchestration layer, while execution and data reveal the
+consequences only later.
 
 Second, systems may fail through \textit{commit failure}. In this case, the
 intended action may remain coherent and the authority under which it was
@@ -936,16 +1127,45 @@ but that it was not revalidated where it became irreversible.
 
 These failure modes may occur independently or jointly. A system may preserve
 orchestration integrity yet execute stale authority. A system may preserve
-admissibility at execution time yet coordinate around a distorted objective.
-Or it may do both: drift structurally while also failing to validate
+admissibility at execution time yet coordinate around a drifted intention.
+Or it may do both: allow intention--intent drift while also failing to validate
 commitment. The coordination economy is therefore not reducible to either
 throughput optimization or compliance checking alone. Its central problem is
-the joint preservation of coherent intent through orchestration and
+the joint preservation of legitimate intention through orchestration and
 admissible action at commitment under distributed conditions.
 
-A system may therefore be structurally coherent yet inadmissible at
-commitment, or admissible at commitment yet globally incoherent with respect
-to the organization's broader intent.
+\subsection{Preparation, Orchestration, Commitment, and Control}
+
+A central implication of the present framework is that preparation should not
+be conflated with control, and that orchestration should not be mistaken for a
+purely technical implementation layer. Organizations invest heavily in
+preparatory structures: governance committees, policy documents, approval
+chains, workflow steps, model documentation, and audit trails. These may shape
+the generation and routing of action significantly. But unless they preserve
+intention through orchestration and bind the point at which irreversible action
+occurs, they do not control execution in the strongest sense.
+
+This distinction matters because many organizational pathologies arise
+precisely when preparation is mistaken for control. A system may appear
+well-governed because decisions are documented, authority domains are assigned,
+workflows are formalized, and approvals are captured, while still allowing
+either of two structural failures. First, the workflow may have already encoded
+a drifted version of the originating intention. Second, an inadmissible act
+may still commit because no mechanism resolves current validity at execution
+time. In such cases, the organization has designed the preparation path and
+perhaps even the process map, but not the full control path.
+
+The coordination economy therefore depends on four related but non-identical
+architectures. The first is the \emph{intention architecture} that specifies
+what the system is trying to preserve. The second is the \emph{decision
+architecture} that assigns standing authority. The third is the
+\emph{orchestration architecture} that preserves fidelity between intention
+and encoded intent while reducing resistance and translating decisions into
+coordinated action paths. The fourth is the \emph{commit architecture} that
+determines whether the act remains admissible under current conditions at the
+moment the system commits, and whether the encoded intent at that point still
+faithfully reflects the originating intention. Durable advantage requires
+all four.
 
 \subsection{Why AI Increases the Importance of Orchestration and Commit Architecture}
 
@@ -955,30 +1175,36 @@ generated, evaluated, and advanced toward execution. As argued in
 Section~\ref{sec:ai}, this can increase potential flow substantially. But AI
 also compresses the interval between preparation and commitment, scales the
 number of actions under consideration, and increases the number of translation
-points through which organizational intent must pass before action occurs.
+points through which organizational intention must pass before action occurs.
 
-As a result, AI systems intensify both major coordination burdens. They may
-increase orchestration risk by introducing additional translation layers
-between organizational intent and operational action, especially when
-objective functions, proxy metrics, workflow engines, or learned policies
-substitute for direct human judgment. They also increase admissibility risk by
-enabling action at a pace that exceeds the organization's capacity to
-determine whether authority and context remain valid at the point of
-execution. Under these conditions, a governance arrangement that remains
-external to the orchestration and execution layers may shape behavior but
-cannot reliably control it.
+Each additional translation point is an additional opportunity for the
+intention--intent gap to widen. AI systems encode intention at design time,
+optimize against proxies for intention during training or operation, and
+execute against those encodings at scale. The gap between the originating
+intention and the operational encoding may be small at any single step but
+cumulative across all steps in a complex AI pipeline. As a result, AI systems
+intensify both major coordination burdens. They may increase orchestration
+risk by introducing additional translation layers between organizational
+intention and operational action. They also increase admissibility risk by
+enabling action at a pace that exceeds the organization's capacity to determine
+whether authority and context remain valid at the point of execution.
 
 The model therefore predicts that in AI-native coordination economies,
 competitive advantage will not accrue simply to organizations that generate
 more decisions, automate more tasks, or distribute more autonomy. It will
-accrue to organizations that build architectures capable of doing three
-things simultaneously:
+accrue to organizations that build architectures capable of doing four things
+simultaneously:
 
 \begin{enumerate}
-  \item preserving the coherence of intent through workflow and orchestration,
+  \item specifying intention explicitly enough that all downstream encoders
+    can verify whether their encoded intent faithfully represents it,
+  \item preserving the fidelity of that intention through workflow and
+    orchestration,
   \item minimizing structural resistance so that flow remains stable rather
     than heat-generating, and
-  \item resolving admissibility at the point of irreversible execution.
+  \item resolving admissibility at the point of irreversible execution,
+    including verification that the encoded intent still faithfully
+    represents the originating intention.
 \end{enumerate}
 
 \subsection{Implications for Organizational Advantage at Scale}
@@ -986,37 +1212,42 @@ things simultaneously:
 Under these conditions, the central unit of competition shifts. It is no
 longer sufficient to compare organizations by production efficiency,
 information access, or local decision quality alone. The relevant question
-becomes whether the organization can preserve valid coordinated action under
+becomes whether the organization can preserve legitimate intention under
 conditions of high throughput, distributed interdependence, and changing
 context.
 
-The model therefore predicts that organizations with lower structural
-resistance, stronger orchestration integrity, and stronger execution-time
-validity mechanisms will realize compounding advantages at scale.
-Specifically, it predicts that:
+The model therefore predicts that organizations with explicit intention
+architecture, lower structural resistance, stronger orchestration integrity,
+and stronger execution-time validity mechanisms will realize compounding
+advantages at scale. Specifically, it predicts that:
 
 \begin{itemize}
   \item organizations that expand autonomy without reducing resistance will
     generate heat rather than proportional value;
+  \item organizations that specify decision rights without specifying
+    intention will exhibit orderly but drifted execution, where each actor
+    decides correctly within their domain toward an encoded objective that
+    has already departed from the original;
   \item organizations that formalize decision rights without preserving
-    intent through orchestration will exhibit orderly but drifted execution;
+    intention through orchestration will exhibit procedurally correct but
+    globally misaligned coordination;
   \item organizations that improve throughput without embedding
     execution-time admissibility checks will increase the risk of invalid
     commitments;
-  \item organizations that maintain local validity while allowing intent to
-    fragment through workflow layers will exhibit globally misaligned but
-    procedurally correct execution;
-  \item organizations that jointly optimize decision architecture,
-    orchestration architecture, resistance reduction, and commit
-    architecture will be able to sustain higher effective throughput before
-    encountering instability thresholds.
+  \item organizations that maintain local validity while allowing intention
+    to fragment through successive encoding steps will exhibit globally
+    misaligned but procedurally correct execution;
+  \item organizations that jointly optimize intention architecture, decision
+    architecture, orchestration architecture, resistance reduction, and
+    commit architecture will be able to sustain higher effective throughput
+    before encountering instability thresholds.
 \end{itemize}
 
 The coordination economy, as defined here, therefore refers not merely to an
 environment in which coordination costs are high. It refers to an environment
 in which value creation increasingly depends on an organization's ability to
-preserve coherent intent through orchestration while also resolving
-admissibility at the point of irreversible execution. In such environments,
+preserve legitimate intention across translation, delegation, automation, and
+irreversible commitment. In such environments, intention architecture,
 resistance management, orchestration integrity, network conservation, and
 commit-time admissibility become coequal determinants of organizational
 viability.
@@ -1032,10 +1263,11 @@ and should be addressed in any research program designed to evaluate its claims.
   \item \textbf{Unvalidated measurement:} The model's constructs---Legitimacy,
     Capability, Insignificance, Risk, and Resistance---are defined
     conceptually but do not yet have validated psychometric or organizational
-    measurement instruments. The algebraic precision of the expressions
-    is not currently matched by corresponding precision in operationalization.
-    Construct validation studies are a necessary precondition for empirical
-    testing of any of the predictions in Section~\ref{sec:predictions}.
+    measurement instruments. The intention--intent distinction, while
+    conceptually central, requires operationalization before it can be
+    empirically tested; distinguishing between faithful encoding and silent
+    drift in practice will require methods beyond those currently available
+    in organizational research.
 
   \item \textbf{Assumed functional forms:} The specific functional
     forms---multiplicative for Autonomy, linear subtraction for Legitimacy
@@ -1049,8 +1281,10 @@ and should be addressed in any research program designed to evaluate its claims.
   \item \textbf{Static structure:} The framework describes system state
     at a point in time. Organizational systems are dynamic: resistance
     changes as architecture adapts, legitimacy changes as relationships
-    develop, and capability changes through learning and attrition.
-    The model does not currently specify differential equations or
+    develop, and capability changes through learning and attrition. The
+    intention--intent gap is also dynamic: it widens as systems age and
+    conditions change, and may narrow when intention architecture is
+    revised. The model does not currently specify differential equations or
     feedback dynamics governing these changes.
 
   \item \textbf{Interpersonal and cultural factors:} The framework models
@@ -1075,7 +1309,26 @@ and should be addressed in any research program designed to evaluate its claims.
     test will need to address this endogeneity through longitudinal
     or experimental designs.
 
-  \item \textbf{Admissibility not yet formalized algebraically:} While the revised framework distinguishes standing legitimacy from execution-time admissibility, it does not yet provide a full algebraic treatment of admissibility comparable to the treatments of Autonomy, Flow, and Heat. The current paper therefore identifies admissibility as a necessary construct and commit architecture as a necessary design layer, but stops short of specifying a complete functional form for how contextual change, temporal decay, and commit-point validation interact.
+  \item \textbf{Intention architecture not yet formalized algebraically:}
+    While the revised framework places intention architecture as the
+    foundational upstream layer, and while the intention--intent distinction
+    is conceptually central, the framework does not yet provide a formal
+    algebraic treatment of intention fidelity comparable to the treatments
+    of Autonomy, Flow, and Heat. The current paper identifies intention
+    architecture as a necessary construct and the intention--intent gap as
+    a primary failure mechanism, but stops short of specifying a complete
+    functional form for how translation fidelity degrades across encoding
+    steps, what the cumulative effect of sequential drift is, and how
+    intention architecture interventions interact with resistance and flow.
+
+  \item \textbf{Admissibility not yet formalized algebraically:} While the
+    framework distinguishes standing legitimacy from execution-time
+    admissibility, it does not yet provide a full algebraic treatment of
+    admissibility comparable to the treatments of Autonomy, Flow, and Heat.
+    The current paper therefore identifies admissibility as a necessary
+    construct and commit architecture as a necessary design layer, but stops
+    short of specifying a complete functional form for how contextual change,
+    temporal decay, and commit-point validation interact.
 
   \item \textbf{The ``heat'' metaphor and reification risk:} The term
     organizational heat carries strong inferential connotations from
@@ -1103,9 +1356,44 @@ theory, and coordination economics each supply evidence for one or more of
 the model's conceptual components; none of them directly implies the specific
 algebraic forms proposed here.
 
-The model's primary theoretical contributions are fourfold. First, it proposes a unified formal language for phenomena---learned helplessness, burnout, coordination failure, escalation overload---that are typically treated in separate literatures. Second, it applies Kirchhoff-like conservation constraints to decision networks, generating structural predictions about where coordination failures will occur and why they are stable. Third, it distinguishes standing legitimacy from execution-time admissibility, thereby separating the problem of coordinated preparation from the problem of valid commitment. Fourth, it applies the flow--resistance--heat framework to AI-augmented organizations, generating predictions about the conditions under which AI-driven capability expansion produces organizational instability or invalid commitment rather than productivity.
+The model's central theoretical claim is that in the coordination economy,
+the scarce capability is not decision-making. It is the preservation of
+legitimate intention---what is being pursued, why, under what trade-offs, and
+with what consequence ownership---as it moves through people, workflows,
+systems, AI agents, and irreversible commitments. Coordination failure most
+often occurs when intention is translated into intent, and the encoded intent
+no longer faithfully carries the original trade-offs, constraints, or
+ownership. This claim motivates the introduction of intention architecture
+as the foundational upstream layer of organizational design.
 
-The testable predictions developed in Section~\ref{sec:predictions} provide a concrete research agenda. Testing them would require both construct validation---developing reliable measures for the model's latent variables---and structural equation modeling, longitudinal designs, or experimental methods capable of separating coherence failure from admissibility failure and estimating the functional forms proposed. Until such tests are conducted, the framework should be understood as a structured theoretical proposal whose value lies in the precision and falsifiability of its claims, not in their prior empirical confirmation.
+The model's primary theoretical contributions are fivefold. First, it
+introduces the intention--intent distinction as the central analytic lever
+for understanding coordination failure: not a failure of authority or
+motivation, but a failure of translation fidelity across delegation,
+encoding, and automation. Second, it proposes a four-layer architectural
+hierarchy---intention, decision, orchestration, and commit---in which each
+layer serves the layer above it and fails when that upstream layer is
+underspecified. Third, it proposes a unified formal language for
+phenomena---learned helplessness, burnout, coordination failure, escalation
+overload---that are typically treated in separate literatures. Fourth, it
+applies Kirchhoff-like conservation constraints to decision networks,
+generating structural predictions about where coordination failures will
+occur and why they are stable. Fifth, it applies the flow--resistance--heat
+framework to AI-augmented organizations, generating predictions about the
+conditions under which AI-driven capability expansion widens the
+intention--intent gap, produces organizational instability, or enables
+invalid commitment rather than productivity.
+
+The testable predictions developed in Section~\ref{sec:predictions} provide a
+concrete research agenda. Testing them would require both construct
+validation---developing reliable measures for the model's latent variables,
+including operational measures of intention--intent fidelity---and structural
+equation modeling, longitudinal designs, or experimental methods capable of
+separating intention drift from admissibility failure and estimating the
+functional forms proposed. Until such tests are conducted, the framework
+should be understood as a structured theoretical proposal whose value lies
+in the precision and falsifiability of its claims, not in their prior
+empirical confirmation.
 
 \bibliographystyle{apalike}
 \begin{thebibliography}{99}
